@@ -42,7 +42,7 @@ google_font:
 # Build settings
 markdown: kramdown
 theme: minima
-plugins:
+gems:
   - jekyll-feed
   - jekyll-redirect-from
 
