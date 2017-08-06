@@ -3,7 +3,7 @@ layout: post
 title: "Deploying Django with Apache and mod_wsgi"
 date: 2014-01-20 20:18:00 +0000
 permalink: /posts/django-with-apache-and-modwsgi/
-redirect_from: /2014/01/django-with-apache-and-modwsgi.html
+redirect_from: /2014/01/django-with-apache-and-modwsgi.html/
 tags:
   - python
   - django
