@@ -36,6 +36,8 @@ header_pages:
 
 timezone: Europe/London
 
+google_analytics: UA-104164449-1
+
 google_font:
   - url: http://fonts.googleapis.com/css?family=Indie+Flower
 
