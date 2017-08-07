@@ -4,6 +4,7 @@ title: "Unicode strings and bytestrings in Python 2"
 date: 2015-04-21 20:24:00 +0100
 permalink: /posts/unicode-strings-and-bytestrings-in-python-2/
 redirect_from: /2015/04/unicode-strings-and-bytestrings-in-python-2.html
+comments: true
 tags:
   - python
   - unicode
