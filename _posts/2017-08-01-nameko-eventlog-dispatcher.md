@@ -26,7 +26,7 @@ Additionally, since what we need in this case is to log events data, we want to 
 
 ## Our solution
 
-In order to achieve that, we have built [`nameko-eventlog-dispatcher`](https://github.com/sohonetlabs/nameko-eventlog-dispatcher), a *"Nameko dependency provider that dispatches log data using `Events` (Pub-Sub)"*.
+In order to achieve that, we have built [`nameko-eventlog-dispatcher`](https://github.com/sohonetlabs/nameko-eventlog-dispatcher), a *"Nameko dependency provider that dispatches log data using Events (Pub-Sub)"*.
 
 This dependency provider inherits from `EventDispatcher`, but enriches the event data with the metadata that we need. It also provides an ***auto capture*** mode, that allows us to log all the calls made to any of the entrypoints in our service.
 
@@ -101,7 +101,7 @@ This is an example of event data:
 }
 {% endhighlight %}
 
-The `data` attribute will contain the event data that was provided when the event was dispatched. If the event was automatically dispatched (***auto capture***) then the data dictionary will be empty.
+The `data` attribute will contain the event data provided when the event was dispatched. If the event was automatically dispatched (***auto capture***) then `data` will be empty.
 
 If `metadata` was provided, then its elements will be included as top level attributes.
 
@@ -120,7 +120,7 @@ EVENTLOG_DISPATCHER:
 
 ## Summary
 
-The [`nameko-eventlog-dispatcher`](https://github.com/sohonetlabs/nameko-eventlog-dispatcher) library can be installed from PyPI with pip:
+The [`nameko-eventlog-dispatcher`](https://github.com/sohonetlabs/nameko-eventlog-dispatcher) library can be installed from PyPI using pip:
 
 {% highlight shell %}
 pip install nameko-eventlog-dispatcher
