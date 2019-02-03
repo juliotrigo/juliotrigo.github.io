@@ -4,7 +4,7 @@ title: Bookmarks
 permalink: /bookmarks/
 ---
 
-* [PEP 20 -- The Zen of Python](http://www.python.org/dev/peps/pep-0020/)
+* [PEP 20 -- The Zen of Python](http://www.python.org/dev/peps/pep-0020/) ([origin](https://mail.python.org/pipermail/python-list/1999-June/001951.html))
 * [The Open Source Definition](http://opensource.org/definition)
 * [Manifesto for Agile Software Development](http://agilemanifesto.org/)
 * [Extreme Programming Rules](http://www.extremeprogramming.org/rules.html)
@@ -17,3 +17,5 @@ permalink: /bookmarks/
 * [Cool URIs don't change](http://www.w3.org/Provider/Style/URI.html)
 * [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](http://www.joelonsoftware.com/articles/Unicode.html)
 * [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+* [Semantic Versioning](http://semver.org/)
+* [assert_called_once: Threat or Menace](https://engineeringblog.yelp.com/2015/02/assert_called_once-threat-or-menace.html)
