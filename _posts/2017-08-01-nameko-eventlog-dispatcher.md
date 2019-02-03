@@ -134,3 +134,9 @@ All the log events are dispatched using the same event type (`log_event`) and ar
 
 - Dispatching all the log events using the same *event type* makes it easier to add new events for our services. The original event type used when the event is dispatched is included in the `event_type` metadata attribute.
 - Log events are individually handled per service, rather than grouping them for all our services. This allows us to have more granular control over what we log and when we start handling log events for a service. It creates different queues per service in `RabbitMQ` which could be beneficial in terms of performance, if the amount of logs varies significantly between services.
+
+***2019-01-28 - Update:***
+
+A new version of the library has been released: [`0.3.0`](https://pypi.org/project/nameko-eventlog-dispatcher/).
+
+We've dropped support for previous [Nameko](https://github.com/nameko/nameko) versions: it only officially supports [`v2.11.0`](https://github.com/nameko/nameko/releases/tag/v2.11.0) now, which is the latest release on the `2.x` branch at the moment.
