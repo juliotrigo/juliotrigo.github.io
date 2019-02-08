@@ -128,7 +128,7 @@ pip install nameko-eventlog-dispatcher
 
 By overriding the existing `EventDispatcher` Nameko dependency provider, we get all its functionally for free, making it also easier to add our custom logic that both dispatches events and adds the metadata that we need.
 
-We've also tried to limit the internal Nameko components that we use in our code to the minimum in order to reduce coupling and prevent incompatibilities with future Nameko releases if its internal implementation changes. However, we reused some internal components, like `event_dispatcher` from the `standalone.events` package.
+We've also tried to limit the internal Nameko components that we use in our code to the minimum in order to reduce coupling and prevent incompatibilities with future Nameko releases if its internal implementation changes.
 
 All the log events are dispatched using the same event type (`log_event`) and are grouped per service:
 
