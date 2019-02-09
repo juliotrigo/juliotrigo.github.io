@@ -19,3 +19,5 @@ permalink: /bookmarks/
 * [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 * [Semantic Versioning](http://semver.org/)
 * [assert_called_once: Threat or Menace](https://engineeringblog.yelp.com/2015/02/assert_called_once-threat-or-menace.html)
+* [Python Wheels](https://pythonwheels.com/)
+* [The Complete Guide to the Kano Model](https://foldingburritos.com/kano-model/)
