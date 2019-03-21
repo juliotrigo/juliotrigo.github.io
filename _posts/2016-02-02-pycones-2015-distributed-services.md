@@ -16,7 +16,7 @@ Here you can find some information about the talk that I gave at [PyConES 2015](
 
 Including the slides: [PyConEs 2015 - Distributed Services](http://slides.com/juliotrigo/pycones2015-distributed-services#/)
 
-<!--more--> 
+<!--more-->
 
 {% include youtubePlayer.html youtube_id=page.youtube_id %}
 

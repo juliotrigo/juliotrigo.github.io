@@ -140,3 +140,9 @@ All the log events are dispatched using the same event type (`log_event`) and ar
 A new version of the library has been released: [`0.3.0`](https://pypi.org/project/nameko-eventlog-dispatcher/).
 
 We've dropped support for previous [Nameko](https://github.com/nameko/nameko) versions: it only officially supports [`v2.11.0`](https://github.com/nameko/nameko/releases/tag/v2.11.0) now, which is the latest release on the `2.x` branch at the moment.
+
+***2019-03-21 - Update:***
+
+A new version of the library has been released: [`0.4.1`](https://pypi.org/project/nameko-eventlog-dispatcher/).
+
+We've added support for older [Nameko](https://github.com/nameko/nameko) versions, including the latest one in the `2.x` series: `2.6`, `2.7`, `2.8`, `2.9`, `2.10`, `2.11`, `2.12`.
