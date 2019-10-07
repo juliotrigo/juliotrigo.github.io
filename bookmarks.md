@@ -17,6 +17,7 @@ Python
 * [PEP 20 -- The Zen of Python](http://www.python.org/dev/peps/pep-0020/) ([origin](https://mail.python.org/pipermail/python-list/1999-June/001951.html))
 * [Python Wheels](https://pythonwheels.com/)
 * [assert_called_once: Threat or Menace](https://engineeringblog.yelp.com/2015/02/assert_called_once-threat-or-menace.html)
+* [Single-sourcing the package version](https://packaging.python.org/guides/single-sourcing-package-version/#single-sourcing-the-version)
 
 Open Source
 -----------
@@ -40,3 +41,7 @@ Architecture
 * [Representational State Transfer (REST)](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 * [REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
 * [Microservices](http://martinfowler.com/articles/microservices.html)
+
+Talks / Presentations
+-------------------
+* [GOTO 2016 • Software that Fits in Your Head • Dan North](https://www.youtube.com/watch?v=4Y0tOi7QWqM)
