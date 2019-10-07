@@ -32,6 +32,7 @@ powered_by: Powered by <a href="https://jekyllrb.com/">Jekyll</a> using a custom
 
 header_pages:
   - about.md
+  - archive.md
   - bookmarks.md
 
 timezone: Europe/London
