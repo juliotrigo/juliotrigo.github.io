@@ -24,17 +24,17 @@ There are many frameworks that support WSGI. Django and Flask are two of them.
 
 Apache is the most commonly used Web Server on Linux. It can be installed using apt-get:
 
-{% highlight shell %}
+```shell
 $ sudo apt-get install apache2
-{% endhighlight %}
+```
 
 We can check the Apache version by doing:
 
-{% highlight shell %}
+```shell
 $ /usr/sbin/apache2 -v
 Server version: Apache/2.4.6 (Ubuntu)
 Server built: Dec 5 2013 18:32:22
-{% endhighlight %}
+```
 
 The Apache setup files will be placed in `/etc/apache2/`
 
@@ -55,34 +55,34 @@ The Apache setup files will be placed in `/etc/apache2/`
 
 The [wsgi module](https://packages.debian.org/unstable/python/libapache2-mod-wsgi) can also be installed in Ubuntu using apt-get:
 
-{% highlight shell %}
+```shell
 $ sudo apt-get install libapache2-mod-wsgi
-{% endhighlight %}
+```
 
 Apache automatically enables `mod_wsgi` once the module is installed.
 
 We can see that `mod_wsgi` is now enabled:
 
-{% highlight shell %}
+```shell
 $ ls /etc/apache2/mods-enabled
 …
 wsgi.conf
 wsgi.load
 …
-{% endhighlight %}
+```
 
 ## Apache VirtualHost
 
 At this point, we need to create a new `VirtualHost` in Apache (we can use the default site as a template).
 
-{% highlight shell %}
+```shell
 $ cd /etc/apache2/sites-available
 $ sudo cp 000-default.conf juliotrigo.conf
 $ vim juliotrigo.conf
-{% endhighlight %}
+```
 
 
-{% highlight apache %}
+```apache
 <VirtualHost *:80>
 
   ServerName juliotrigo.com
@@ -110,37 +110,37 @@ $ vim juliotrigo.conf
   </Directory>
 
 </VirtualHost>
-{% endhighlight %}
+```
 
 
 Disable Apache´s default site.
 
-{% highlight shell %}
+```shell
 $ sudo a2dissite 000-default.conf
 Site 000-default disabled.
 To activate the new configuration, you need to run:
 service apache2 reload
-{% endhighlight %}
+```
 
 Enable our site:
 
-{% highlight shell %}
+```shell
 $ sudo a2ensite juliotrigo.conf
 Enabling site juliotrigo.
 To activate the new configuration, you need to run:
 service apache2 reload
-{% endhighlight %}
+```
 
 And restart Apache:
 
-{% highlight shell %}
+```shell
 $ sudo /etc/init.d/apache2 stop
 * Stopping web server apache2
 *
 $ sudo /etc/init.d/apache2 start
 * Starting web server apache2
 *
-{% endhighlight %}
+```
 
 In our example, Apache will also serve static files. However, it is recommended to use a separate Web server for that.
 

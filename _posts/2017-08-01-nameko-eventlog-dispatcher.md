@@ -34,7 +34,7 @@ This dependency provider inherits from `EventDispatcher`, but enriches the event
 
 In order to use the dependency, we need to include the `EventLogDispatcher` dependency provider in our service class and manually call it to dispatch an event:
 
-{% highlight python %}
+```python
 from nameko.rpc import rpc
 from nameko_eventlog_dispatcher import EventLogDispatcher
 
@@ -50,7 +50,7 @@ class FooService:
         self.eventlog_dispatcher(
           'foo_event_type', {'value': 1}, metadata={'meta': 2}
         )
-{% endhighlight %}
+```
 
 Calling `foo_method` dispatches an event from the `foo` service with `log_event` as the event type. However `foo_event_type` will be the event type included in the event metadata.
 
@@ -58,7 +58,7 @@ Calling `foo_method` dispatches an event from the `foo` service with `log_event`
 
 Then, any Nameko service will be able to handle this event.
 
-{% highlight python %}
+```python
 from nameko.events import event_handler
 
 
@@ -69,7 +69,7 @@ class BarService:
     @event_handler('foo', 'log_event')
     def foo_log_event_handler(self, body):
         """`body` will contain the event log data."""
-{% endhighlight %}
+```
 
 ### Auto capture enabled
 
@@ -81,7 +81,7 @@ We can achieve that by overriding the `worker_setup` method in the dependency pr
 
 This is an example of event data:
 
-{% highlight python %}
+```python
 {
   "service_name": "foo",
   "entrypoint_protocol": "Rpc",
@@ -99,7 +99,7 @@ This is an example of event data:
   "meta": 2,  # extra information provided as "metadata"
   "data": {"value": 1}  # extra information provided as "event_data"
 }
-{% endhighlight %}
+```
 
 The `data` attribute will contain the event data provided when the event was dispatched. If the event was automatically dispatched (***auto capture***) then `data` will be empty.
 
@@ -109,22 +109,22 @@ If `metadata` was provided, then its elements will be included as top level attr
 
 An `EVENTLOG_DISPATCHER` element can be added (optional) to our Nameko configuration file to override some of the setup default values:
 
-{% highlight yaml %}
+```yaml
 ## config.yaml
 
 EVENTLOG_DISPATCHER:
   auto_capture: true  # enables auto capture mode
   entrypoints_to_exclude: []  # list of entrypoint names to exclude when auto capture mode is enabled
   event_type: log_event  # event type used to dispatch all the events
-{% endhighlight %}
+```
 
 ## Summary
 
 The [`nameko-eventlog-dispatcher`](https://github.com/sohonetlabs/nameko-eventlog-dispatcher) library can be installed from PyPI using pip:
 
-{% highlight shell %}
-pip install nameko-eventlog-dispatcher
-{% endhighlight %}
+```shell
+$ pip install nameko-eventlog-dispatcher
+```
 
 By overriding the existing `EventDispatcher` Nameko dependency provider, we get all its functionally for free, making it also easier to add our custom logic that both dispatches events and adds the metadata that we need.
 

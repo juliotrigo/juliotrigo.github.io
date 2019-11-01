@@ -11,12 +11,12 @@ tags:
   - UTF-8
 ---
 
-{% highlight shell %}
+```shell
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeEncodeError: 'ascii' codec can’t encode character u'\u03b1'
 in position 0: ordinal not in range(128)
-{% endhighlight %}
+```
 
 Does this Python exception look familiar? Most Python developers have seen this at least once.
 
@@ -34,7 +34,7 @@ Let's say that we want to work with some Greek characters, which cannot be repre
 
 We can start creating them as Unicode characters.
 
-{% highlight shell %}
+```shell
 >>> a = u'\u03b1'
 >>> b = u'\u03b2'
 >>> g = u'\u03b3'
@@ -44,21 +44,21 @@ We can start creating them as Unicode characters.
 
 >>> print a, b, g
 α β γ
-{% endhighlight %}
+```
 
 In **Unicode**, characters are represented by code points: integer values usually denoted in base 16.
 
 We cannot represent them using the **ASCII** character-encoding scheme (7 bits, 0-127), which is the default encoding in Python 2. So it is the one used (by default) when converting Unicode characters into bytestrings (str in Python 2).
 
-{% highlight shell %}
+```shell
 >>> alphabet = '{}{}{}{}'.format(a, b, g, 'd')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeEncodeError: 'ascii' codec can’t encode character u'\u03b1'
 in position 0: ordinal not in range(128)
-{% endhighlight %}
+```
 
-{% highlight shell %}
+```shell
 >>> alphabet = u'{}{}{}{}'.format(a, b, g, 'd')
 
 >>> alphabet
@@ -66,11 +66,11 @@ u'\u03b1\u03b2\u03b3d'
 
 >>> print alphabet
 αβγd
-{% endhighlight %}
+```
 
 A Unicode string is a sequence of code points (integers). In order to represent Unicode strings as a sequence of bytes we need to encode them using a character encoding. **UTF-8** is a character encoding capable of encoding all possible code points in Unicode.
 
-{% highlight shell %}
+```shell
 >>> alphabet_str = alphabet.encode('utf-8')
 
 >>> alphabet_str
@@ -78,33 +78,33 @@ A Unicode string is a sequence of code points (integers). In order to represent 
 
 >>> print alphabet_str
 αβγd
-{% endhighlight %}
+```
 
 Now, we have a Python str (UTF-8 encoding): a sequence of bytes representing the Unicode characters.
 
 If a character encoding is not specified, then the **encode** method will assume that we want to use ASCII and will fail because those characters cannot be represented in ASCII.
 
-{% highlight shell %}
+```shell
 >>> alphabet_str = alphabet.encode()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeEncodeError: 'ascii' codec can’t encode characters
 in position 0-2: ordinal not in range(128)
-{% endhighlight %}
+```
 
 We cannot represent those characters in **latin-1** (**ISO-8859-1**) either.
 
-{% highlight shell %}
+```shell
 >>> alphabet_str = alphabet.encode('latin-1')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeEncodeError: 'latin-1' codec can’t encode characters
 in position 0-2: ordinal not in range(256)
-{% endhighlight %}
+```
 
 And, as we expect, we also get an error if we try to decode the Unicode string (which does not make sense).
 
-{% highlight shell %}
+```shell
 >>> alphabet_str = alphabet.decode('utf-8')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -113,11 +113,11 @@ Traceback (most recent call last):
     return codecs.utf_8_decode(input, errors, True)
 UnicodeEncodeError: 'ascii' codec can’t encode characters
 in position 0-2: ordinal not in range(128)
-{% endhighlight %}
+```
 
 Once we have the bytestring, we can **decode** it using the UTF-8 character encoding, and get back the original Unicode string.
 
-{% highlight shell %}
+```shell
 >>> alphabet_u = alphabet_str.decode('utf-8')
 
 >>> alphabet_u
@@ -125,21 +125,21 @@ u'\u03b1\u03b2\u03b3d'
 
 >>> print(alphabet_u)
 αβγd
-{% endhighlight %}
+```
 
 Again, we cannot encode a bytestring that was already encoded using UTF-8 (it does not make sense either).
 
-{% highlight shell %}
+```shell
 >>> alphabet_u = alphabet_str.encode('utf-8')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeDecodeError: 'ascii' codec can’t decode byte 0xce
 in position 0: ordinal not in range(128)
-{% endhighlight %}
+```
 
 We can see that all those variables have different types:
 
-{% highlight shell %}
+```shell
 >>> type(alphabet)
 <type 'unicode'>
 
@@ -148,38 +148,38 @@ We can see that all those variables have different types:
 
 >>> type(alphabet_u)
 <type 'unicode'>
-{% endhighlight %}
+```
 
 And different lengths.
 
-{% highlight shell %}
+```shell
 >>> len(alphabet_str)
 7
 
 >>> len(alphabet_u)
 4
-{% endhighlight %}
+```
 
 So, in order to convert types:
 
-{% highlight python %}
+```python
 s.decode(encoding)  # <type 'str'> to <type 'unicode'>
 u.encode(encoding)  # <type 'unicode'> to <type 'str'>
-{% endhighlight %}
+```
 
 Additionally, we need to keep in mind that we can write Unicode literals in any encoding using Python. In order to do that, we have to declare the encoding being used by including a special comment as either the first or second line of the source file.
 
-{% highlight python %}
+```python
 # -*- coding: latin-1 -*-
 
 # -*- coding: utf-8 -*-
-{% endhighlight %}
+```
 
 Unicode literals are written as strings prefixed with the `'u'` or `'U'` character.
 
 Below, we can see some examples of how the same string could be a Unicode or a bytestring string just depending on whether we write it as a Unicode literal or not.
 
-{% highlight shell %}
+```shell
 >>> u'ε'
 u'\u03b5'
 
@@ -204,11 +204,11 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 UnicodeDecodeError: 'ascii' codec can’t decode byte 0xce
 in position 0: ordinal not in range(128)
-{% endhighlight %}
+```
 
 Finally, we can see how we may get different bytestrings when encoding the same Unicode string using different character encodings.
 
-{% highlight shell %}
+```shell
 >>> u'nona'.encode('utf-8')
 'nona'
 
@@ -220,4 +220,4 @@ Finally, we can see how we may get different bytestrings when encoding the same 
 
 >>> u'ñóñà'.encode('latin-1')
 '\xf1\xf3\xf1\xe0'
-{% endhighlight %}
+```

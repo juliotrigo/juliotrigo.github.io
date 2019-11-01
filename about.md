@@ -5,7 +5,7 @@ permalink: /about/
 redirect_from: /p/about-this-blog.html
 ---
 
-{% highlight json %}
+```json
 {
     "name": "Julio Trigo",
     "alumnus": {
@@ -35,7 +35,7 @@ redirect_from: /p/about-this-blog.html
         "url": "https://slides.com/juliotrigo"
     }
 }
-{% endhighlight %}
+```
 
 I am also one of the technical reviewers of the following books, by [Fabrizio Romano](https://www.fabrizio.online/):
 
