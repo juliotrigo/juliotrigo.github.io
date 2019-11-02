@@ -19,3 +19,7 @@ Julio Trigo™ and the Julio Trigo™ logo are trademarks of Julio Vicente Trigo
 The source code of this website is available on <a href='https://github.com/juliotrigo/juliotrigo.github.io/blob/master/LICENSE'>GitHub</a> under the <a href='https://opensource.org/licenses/MIT'>MIT License</a>.
 
 The "home" and "rss feed" icons by <a href='https://material.io'>Material Design</a> are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0.
+
+<a href='https://github.com/tyre/base16-eighties-dark'>Base16 Eighties Dark Theme</a> colors,
+arranged with the <a href='https://github.com/idleberg/base16-pygments'>Base16 Eighties Dark template</a>,
+have been used for code highlighting.
