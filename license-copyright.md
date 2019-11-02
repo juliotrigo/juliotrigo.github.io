@@ -1,6 +1,7 @@
 ---
 layout: page
 title: License & copyright
+last_modified_at: 2019-11-02 11:31:00 +0000
 permalink: /license-copyright/
 ---
 

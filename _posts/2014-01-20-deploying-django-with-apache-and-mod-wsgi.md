@@ -2,6 +2,7 @@
 layout: post
 title: "Deploying Django with Apache and mod_wsgi"
 date: 2014-01-20 20:18:00 +0000
+last_modified_at: 2019-11-02 11:31:00 +0000
 permalink: /posts/django-with-apache-and-modwsgi/
 redirect_from: /2014/01/django-with-apache-and-modwsgi.html
 comments: true
