@@ -1,2 +1,8 @@
-pre > code { background-color: $code_background; }
-.highlighter-rouge .highlight { background-color: $code_background; }
+pre > code {
+  background-color: $code-background;
+  font-family: $code-font-family;
+}
+
+.highlighter-rouge .highlight {
+  background-color: $code-background;
+}

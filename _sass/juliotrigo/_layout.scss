@@ -20,7 +20,7 @@
 // Overrride Minima theme
 .site-title {
   @include relative-font-size(2.625);
-  font-family: "Indie Flower", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $title-font-family;
   font-weight: 300;
   line-height: $base-line-height * $base-font-size * 3.25;
   letter-spacing: -1px;
