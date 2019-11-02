@@ -16,7 +16,7 @@ The aim of this article is to explain how to deploy a Django site with Apache an
 <!--more-->
 ## WSGI
 
-[WSGI](http://wsgi.readthedocs.io) (Web Server Gateway Interface) is the Python standard ([PEP 3333](https://www.python.org/dev/peps/pep-3333/)) for web servers and applications. It is a specification that describes how web servers communicate with web applications.
+[WSGI](https://wsgi.readthedocs.io) (Web Server Gateway Interface) is the Python standard ([PEP 3333](https://www.python.org/dev/peps/pep-3333/)) for web servers and applications. It is a specification that describes how web servers communicate with web applications.
 
 There are many frameworks that support WSGI. Django and Flask are two of them.
 

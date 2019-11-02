@@ -22,7 +22,7 @@ Does this Python exception look familiar? Most Python developers have seen this 
 
 Character sets, encodings, Unicode and all that stuff are hard to deal with until you fully understand what is going on behind the scenes.<!--more--> Please find below a few web pages that I find essential:
 
-* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](http://www.joelonsoftware.com/articles/Unicode.html) by Joel Spolsky
+* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/articles/Unicode.html) by Joel Spolsky
 
 * [Unicode HOWTO — Python 2.7.9 documentation](https://docs.python.org/2/howto/unicode.html)
 

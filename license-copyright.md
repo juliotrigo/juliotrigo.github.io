@@ -6,9 +6,9 @@ permalink: /license-copyright/
 
 {{ site.copyright }}
 
-Except where otherwise noted, content on this site by <a href='http://juliotrigo.com/' property='http://creativecommons.org/ns#attributionName' rel='http://creativecommons.org/ns#attributionURL'>Julio Vicente Trigo Guijarro</a> is licensed under a <a href='http://creativecommons.org/licenses/by-sa/4.0/' rel='license'>Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+Except where otherwise noted, content on this site by <a href='http://juliotrigo.com/' property='https://creativecommons.org/ns#attributionName' rel='https://creativecommons.org/ns#attributionURL'>Julio Vicente Trigo Guijarro</a> is licensed under a <a href='https://creativecommons.org/licenses/by-sa/4.0/' rel='license'>Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
-A <a href='http://creativecommons.org/licenses/by-sa/4.0/'>summary</a> of the terms of this license is available, as well as its <a href='http://creativecommons.org/licenses/by-sa/4.0/legalcode'>detailed terms.</a>
+A <a href='https://creativecommons.org/licenses/by-sa/4.0/'>summary</a> of the terms of this license is available, as well as its <a href='https://creativecommons.org/licenses/by-sa/4.0/legalcode'>detailed terms.</a>
 
 The rights in the trademarks, logos and service marks of this site are not licensed under the Creative Commons license, and to the extent they are works of authorship (like logos and graphic design), they are not included in the work that is licensed under those terms.
 

@@ -14,7 +14,7 @@ youtube_id: LYVfOfR3mp0
 
 Here you can find all the information about the talk that I gave at [PyConES 2015](http://2015.es.pycon.org) on the 22nd of November, 2015: ***Having it All: Distributed services with Django, Boto, and SQS queues***
 
-Slides: [PyConES 2015 - Distributed Services](http://slides.com/juliotrigo/pycones2015-distributed-services#/)
+Slides: [PyConES 2015 - Distributed Services](https://slides.com/juliotrigo/pycones2015-distributed-services#/)
 
 <!--more-->
 

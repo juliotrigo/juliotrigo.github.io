@@ -17,7 +17,7 @@ title: Julio Trigo
 description: > # this means to ignore newlines until "baseurl:"
   Julio Trigo's blog.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://blog.juliotrigo.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blog.juliotrigo.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 twitter_username: juliotrigo
 github_username: juliotrigo
@@ -46,7 +46,7 @@ timezone: Europe/London
 google_analytics: UA-104164449-1
 
 google_font:
-  - url: http://fonts.googleapis.com/css?family=Indie+Flower
+  - url: https://fonts.googleapis.com/css?family=Indie+Flower
 
 disqus:
   shortname: juliotrigo-blog

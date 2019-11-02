@@ -14,7 +14,7 @@ tags:
 
 Here you can find all the information about the talk that I gave at [PyConES 2019](http://2019.es.pycon.org) on the 5th of October, 2019: ***A practical DDD approach to Nameko microservices***
 
-Slides: [PyConES 2019 - A practical DDD approach to Nameko microservices](http://slides.com/juliotrigo/pycones2019-a-practical-ddd-approach-to-nameko-microservices#/)
+Slides: [PyConES 2019 - A practical DDD approach to Nameko microservices](https://slides.com/juliotrigo/pycones2019-a-practical-ddd-approach-to-nameko-microservices#/)
 
 <!--more-->
 

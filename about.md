@@ -20,7 +20,7 @@ redirect_from: /p/about-this-blog.html
     },
     "company": "C̶e̶s̶s̶e̶r̶ W̶e̶b̶f̶u̶s̶i̶o̶n̶ R̶a̶z̶o̶r̶ ̶O̶c̶c̶a̶m̶ S̶t̶u̶d̶e̶n̶t̶.̶c̶o̶m̶ Sohonet",
     "blog": {
-        "url": "http://blog.juliotrigo.com"
+        "url": "https://blog.juliotrigo.com"
     },
     "twitter": {
         "url": "https://twitter.com/juliotrigo"
