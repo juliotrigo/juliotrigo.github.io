@@ -1,7 +1,7 @@
 ---
 layout: page
 title: License & copyright
-last_modified_at: 2019-11-02 11:31:00 +0000
+last_modified_at: 2019-11-03 20:50:00 +0000
 permalink: /license-copyright/
 ---
 
@@ -19,8 +19,14 @@ Julio Trigo™ and the Julio Trigo™ logo are trademarks of Julio Vicente Trigo
 
 The source code of this website is available on <a href='https://github.com/juliotrigo/juliotrigo.github.io/blob/master/LICENSE'>GitHub</a> under the <a href='https://opensource.org/licenses/MIT'>MIT License</a>.
 
-The "home" and "rss feed" icons by <a href='https://material.io'>Material Design</a> are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0.
+The <a href='https://www.latofonts.com/lato-free-fonts/'>Lato</a> font family, used on this site, is avail­able under the <a href='https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL'>SIL Open Font License 1.1</a>.
+
+The <a href='https://design.ubuntu.com/font/'>Ubuntu</a> font family, used on this site, is avail­able under the <a href='https://ubuntu.com/legal/font-licence'>Ubuntu font licence</a>.
+
+The <a href='https://fonts.google.com/specimen/Indie+Flower'>Indie Flower</a> font family, used on this site, is avail­able under the <a href='https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web'>Open Font License</a>.
 
 <a href='https://github.com/tyre/base16-eighties-dark'>Base16 Eighties Dark Theme</a> colors,
 arranged with the <a href='https://github.com/idleberg/base16-pygments'>Base16 Eighties Dark template</a>,
 have been used for code highlighting.
+
+The "home" and "rss feed" icons by <a href='https://material.io'>Material Design</a> are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0.
