@@ -30,11 +30,9 @@ excerpt_link_text: ...read more
 copyright: Copyright © 2013-2019 Julio Vicente Trigo Guijarro
 license_link_text: License &amp; copyright
 powered_by: >
-  Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+  Powered by <a href="https://pages.github.com/">GitHub Pages</a>
+  and <a href="https://jekyllrb.com/">Jekyll</a>
   using a customized <a href="https://github.com/jekyll/minima">Minima</a> theme
-  and <a href="https://github.com/tyre/base16-eighties-dark">Base16 Eighties Dark Theme</a> colors,
-  arranged with the <a href="https://github.com/idleberg/base16-pygments">Base16 Eighties Dark template</a>,
-  for code highlighting
 
 header_pages:
   - about.md
