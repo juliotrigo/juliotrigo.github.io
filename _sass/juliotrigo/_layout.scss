@@ -1,39 +1,28 @@
 /**
  * Site header
  */
-// override this class to remove the border-top
+// Override this class
 .site-header {
-  //border-top: 5px solid $grey-color-dark;
-  border-top: 0px solid $grey-color-light;
-  border-bottom: 1px solid $grey-color-light;
-  min-height: $spacing-unit * 1.865;
-
-  // Positioning context for the mobile navigation icon
-  position: relative;
+  border-top: 0px solid $grey-color-light;  /* Remove the border-top */
 }
 
-.footer-license {
-  @include relative-font-size(0.9375);
-  color: $grey-color;
-}
-
-// Overrride Minima theme
+// Overrride this class
 .site-title {
-  @include relative-font-size(2.625);
-  font-family: $title-font-family;
-  font-weight: 300;
-  line-height: $base-line-height * $base-font-size * 3.25;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-  float: left;
+  @include relative-font-size(2.625);  /* Increase font-size */
+  font-family: $title-font-family;  /* Add the font-family */
+  line-height: $base-line-height * $base-font-size * 3.25;  /* Add line-height for the title to fit */
 
-  &,
-  &:visited {
-    color: $grey-color-dark;
-  }
-
+  // Added to not decorate the site title like a link
   &:hover {
     color: $text-color;
     text-decoration: none;
   }
+}
+
+/**
+ * Site footer
+ */
+.footer-license {
+  @include relative-font-size(0.9375);
+  color: $grey-color;
 }
