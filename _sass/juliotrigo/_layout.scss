@@ -27,6 +27,12 @@
   color: $grey-color;
 }
 
+.material-icons-footer {
+  color: $grey-color;  /* Use the social media list color */
+  margin-right: -7px;  /* Align with the rest of the social media icons */
+  margin-left: -4px;  /* Align with the rest of the social media icons */
+}
+
 /**
  * Posts
  */
