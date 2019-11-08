@@ -29,4 +29,4 @@ The <a href='https://fonts.google.com/specimen/Indie+Flower'>Indie Flower</a> fo
 arranged with the <a href='https://github.com/idleberg/base16-pygments'>Base16 Eighties Dark template</a>,
 have been used for code highlighting.
 
-The "home" and "rss feed" icons by <a href='https://material.io'>Material Design</a> are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0.
+The "home" and "rss feed" <a href='https://material.io/resources/icons/'>icons</a> by <a href='https://material.io'>Material Design</a> are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0.
