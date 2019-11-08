@@ -45,3 +45,17 @@
   height: 100%;
   border: 0;
 }
+
+/**
+ * Rules to make Material icons work nicely within posts
+ */
+.material-icons {
+  margin-bottom: 3px;
+  vertical-align: middle;
+  padding-right: 7px;
+}
+
+.nobull {
+  list-style-type: none;
+  margin-left: 1.1em;  /* Compensate for the margin that the bullets had */
+ }
