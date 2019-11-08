@@ -13,7 +13,7 @@ redirect_from: /p/about-this-blog.html
         "university": "University of Alicante"
     },
     "occupation": [
-        "Software engineer", "Scrum master (CSM)", "Python dev", "Team lead"
+        "Software engineer", "Scrum master (CSM)", "Python developer", "Team lead"
     ],
     "address": {
         "city": "A̶l̶i̶c̶a̶n̶t̶e̶ London",
