@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bookmarks
-last_modified_at: 2019-11-09 11:20:00 +0000
+last_modified_at: 2019-11-10 23:25:00 +0000
 permalink: /bookmarks/
 ---
 
@@ -9,7 +9,7 @@ Open Source
 -----------
 
 * [The Open Source Definition](https://opensource.org/definition)
-* [Creative Commons - When we share, everyone wins](https://creativecommons.org/)
+* [Creative Commons](https://creativecommons.org/)
 
 Programming
 -----------

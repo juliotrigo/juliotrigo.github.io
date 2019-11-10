@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-last_modified_at: 2019-11-08 19:30:00 +0000
+last_modified_at: 2019-11-10 13:00:00 +0000
 permalink: /about/
 redirect_from: /p/about-this-blog.html
 ---
