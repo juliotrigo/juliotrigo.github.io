@@ -9,6 +9,7 @@ Open Source
 -----------
 
 * [The Open Source Definition](https://opensource.org/definition)
+* [Creative Commons - When we share, everyone wins](https://creativecommons.org/)
 
 Programming
 -----------
