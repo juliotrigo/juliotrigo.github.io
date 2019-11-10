@@ -10,7 +10,8 @@ redirect_from: /p/about-this-blog.html
 {
     "name": "Julio Trigo",
     "alumnus": {
-        "university": "University of Alicante"
+        "university": "University of Alicante",
+        "degree": "Computer Science Engineering"
     },
     "occupation": [
         "Software engineer", "Scrum master (CSM)", "Python developer", "Team lead"
