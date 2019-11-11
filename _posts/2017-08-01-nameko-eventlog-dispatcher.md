@@ -2,7 +2,7 @@
 layout: post
 title: "Nameko Eventlog Dispatcher"
 date: 2017-08-08 09:25:05 +0100
-last_modified_at: 2019-11-01 19:02:00 +0000
+last_modified_at: 2019-11-11 00:06:00 +0000
 permalink: /posts/nameko-eventlog-dispatcher/
 comments: true
 tags:
