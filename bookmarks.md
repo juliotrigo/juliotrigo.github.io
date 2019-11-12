@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bookmarks
-last_modified_at: 2019-11-10 23:25:00 +0000
+last_modified_at: 2019-11-12 23:39:00 +0000
 permalink: /bookmarks/
 ---
 
@@ -27,6 +27,13 @@ Python 🐍
 * [assert_called_once: Threat or Menace](https://engineeringblog.yelp.com/2015/02/assert_called_once-threat-or-menace.html)
 * [Single-sourcing the package version](https://packaging.python.org/guides/single-sourcing-package-version/#single-sourcing-the-version)
 
+Redis
+=====
+* [Redis Keyspace Notifications](https://redis.io/topics/notifications)
+* [Pub/Sub](https://redis.io/topics/pubsub)
+* [Introduction to Redis Streams](https://redis.io/topics/streams-intro)
+* [Redis Streams and the Unified Log](https://brandur.org/redis-streams)
+
 Process
 -------
 
@@ -36,6 +43,7 @@ Agile
 =====
 
 * [Manifesto for Agile Software Development](https://agilemanifesto.org/)
+* [Manifesto for Software Craftsmanship](http://manifesto.softwarecraftsmanship.org/)
 * [The Scrum Guide](https://scrumguides.org/scrum-guide.html)
 * [Extreme Programming Rules](http://www.extremeprogramming.org/rules.html)
 * [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
@@ -62,7 +70,9 @@ Architecture
 * [Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 * [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
 * [Microservices](https://martinfowler.com/articles/microservices.html)
+* [The Log: What every software engineer should know about real-time data's unifying abstraction](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
 
 Talks / Presentations
 -------------------
 * [GOTO 2016 • Software that Fits in Your Head • Dan North](https://www.youtube.com/watch?v=4Y0tOi7QWqM)
+* [InfoQ • The Last Programming Language • Robert Martin](https://www.infoq.com/presentations/history-future-programming-languages/)
