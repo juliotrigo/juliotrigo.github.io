@@ -2,7 +2,7 @@
 layout: post
 title: "Lato 2.0 Font Family"
 date: 2019-11-12 23:47:00 +0100
-last_modified_at: 2019-11-12 23:47:00 +0000
+last_modified_at: 2020-04-18 11:55:00 +0000
 permalink: /posts/lato-2-0-font-family/
 comments: true
 tags:
@@ -14,7 +14,7 @@ tags:
 
 As part of a small redesign on this website, I wanted to use a high-quality and elegant font that *also looked good with text in italics* and **displaying content in bold**, but ***specially when combining both styles, which is something more difficult to find***.
 
-After doing some research and comparing a few fonts, I started to use the *Lato* [Google font](https://fonts.google.com/specimen/Lato). However, even though it looked quite good, I was not fully convinced.
+After doing some research and comparing a few different fonts, I started to use the *Lato* [Google font](https://fonts.google.com/specimen/Lato). However, even though it looked quite good, I was not fully convinced.
 
 <!--more-->
 
