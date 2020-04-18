@@ -2,7 +2,7 @@
 layout: post
 title: "PyConES 2019 - A practical DDD approach to Nameko microservices"
 date: 2019-10-07 19:50:00 +0100
-last_modified_at: 2019-11-09 11:20:00 +0000
+last_modified_at: 2020-04-18 12:10:00 +0000
 permalink: /posts/pycones-2019-a-practical-ddd-approach-to-nameko-microservices/
 comments: true
 tags:
@@ -11,6 +11,7 @@ tags:
   - microservices
   - software design
   - domain-driven design
+youtube_id: 4O4jo56fgXE
 ---
 
 Here you can find all the information about the talk that I gave at [PyConES 2019](https://2019.es.pycon.org) on the 5th of October, 2019: ***A practical DDD approach to Nameko microservices***
@@ -18,6 +19,8 @@ Here you can find all the information about the talk that I gave at [PyConES 201
 Slides: [PyConES 2019 - A practical DDD approach to Nameko microservices](https://slides.com/juliotrigo/pycones2019-a-practical-ddd-approach-to-nameko-microservices)
 
 <!--more-->
+
+{% include youtubePlayer.html youtube_id=page.youtube_id %}
 
 Here's the excerpt of the talk:
 
