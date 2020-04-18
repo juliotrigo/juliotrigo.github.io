@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bookmarks
-last_modified_at: 2019-11-12 23:39:00 +0000
+last_modified_at: 2020-04-18 11:55:00 +0000
 permalink: /bookmarks/
 ---
 
@@ -29,8 +29,8 @@ Python 🐍
 
 Redis
 =====
-* [Redis Keyspace Notifications](https://redis.io/topics/notifications)
 * [Pub/Sub](https://redis.io/topics/pubsub)
+* [Redis Keyspace Notifications](https://redis.io/topics/notifications)
 * [Introduction to Redis Streams](https://redis.io/topics/streams-intro)
 * [Redis Streams and the Unified Log](https://brandur.org/redis-streams)
 
@@ -54,6 +54,8 @@ Web
 
 * [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 * [WebPageTest - Website Performance and Optimization Test](https://www.webpagetest.org)
+* [Jamstack](https://jamstack.org/)
+* [JavaScript.info - The Modern JavaScript Tutorial](https://javascript.info/)
 
 Design
 ======
