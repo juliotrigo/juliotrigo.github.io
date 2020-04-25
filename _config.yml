@@ -45,9 +45,9 @@ timezone: Europe/London
 google_analytics: UA-104164449-1
 
 google_font:
-  - url: https://fonts.googleapis.com/css?family=Indie+Flower
-  - url: https://fonts.googleapis.com/css?family=Ubuntu+Mono
-  - url: https://fonts.googleapis.com/css?family=Material+Icons
+  - url: https://fonts.googleapis.com/css?family=Indie+Flower&display=swap
+  - url: https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap
+  - url: https://fonts.googleapis.com/css?family=Material+Icons&display=swap
 
 disqus:
   shortname: juliotrigo-blog
