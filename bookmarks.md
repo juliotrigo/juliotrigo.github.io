@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bookmarks
-last_modified_at: 2020-04-18 11:55:00 +0000
+last_modified_at: 2020-04-25 11:50:00 +0000
 permalink: /bookmarks/
 ---
 
@@ -15,7 +15,15 @@ Programming
 -----------
 
 * [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/articles/Unicode.html)
+* [Dont Repeat Yourself](http://c2.com/cgi/wiki?DontRepeatYourself)
+* [AHA Programming](https://kentcdodds.com/blog/aha-programming)
+* [The Wrong Abstraction](https://www.sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
 * [Semantic Versioning](https://semver.org/)
+* [CommonMark](https://commonmark.org/)
+
+Git
+===
+
 * [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
 * [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
 
@@ -52,6 +60,9 @@ Agile
 Web
 ---
 
+* [Cool URIs don't change](https://www.w3.org/Provider/Style/URI.html)
+* [Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+* [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
 * [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 * [WebPageTest - Website Performance and Optimization Test](https://www.webpagetest.org)
 * [Jamstack](https://jamstack.org/)
@@ -66,15 +77,12 @@ Design
 Architecture
 ------------
 
-* [Dont Repeat Yourself](http://c2.com/cgi/wiki?DontRepeatYourself)
-* [Cool URIs don't change](https://www.w3.org/Provider/Style/URI.html)
 * [SOLID](https://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29)
-* [Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
-* [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
 * [Microservices](https://martinfowler.com/articles/microservices.html)
 * [The Log: What every software engineer should know about real-time data's unifying abstraction](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
 
 Talks / Presentations
 -------------------
+
 * [GOTO 2016 • Software that Fits in Your Head • Dan North](https://www.youtube.com/watch?v=4Y0tOi7QWqM)
 * [InfoQ • The Last Programming Language • Robert Martin](https://www.infoq.com/presentations/history-future-programming-languages/)
