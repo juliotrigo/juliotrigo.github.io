@@ -4,7 +4,6 @@ title: "Lato 2.0 Font Family"
 date: 2019-11-12 23:47:00 +0100
 last_modified_at: 2020-04-18 11:55:00 +0000
 permalink: /posts/lato-2-0-font-family/
-comments: true
 tags:
   - lato
   - css

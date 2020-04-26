@@ -50,9 +50,6 @@ google_font:
   - url: https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap
   - url: https://fonts.googleapis.com/css?family=Material+Icons&display=swap
 
-disqus:
-  shortname: juliotrigo-blog
-
 # Build settings
 markdown: kramdown
 theme: minima
