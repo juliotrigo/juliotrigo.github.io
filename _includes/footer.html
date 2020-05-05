@@ -1,5 +1,5 @@
 <footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+  <data class="u-url" rel="me" href="{{ site.url }}"></data>
 
   <div class="wrapper">
 
@@ -8,10 +8,10 @@
     <div class="footer-col-wrapper">
 
       <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-            <li>{% include icon-home.html %}</li>
-            <li>{% include icon-rss-feed.html %}</li>
-        </ul>
+        <div class="contact-list">
+          <p><img class="u-photo" src="{{- site.gravatar_photo | escape -}}" alt="Julio Trigo's photo" /></p>
+          <p class="p-name">{{- site.author | escape -}}</p>
+        </div>
       </div>
 
       <div class="footer-col footer-col-2">
@@ -28,11 +28,12 @@
           {% if site.slides_username %}
             <li>{% include icon-slides.html %}</li>
           {% endif %}
+          <li>{% include icon-rss-feed.html %}</li>
         </ul>
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
+        <p class="p-note">{{- site.description | escape -}}</p>
       </div>
 
     </div>

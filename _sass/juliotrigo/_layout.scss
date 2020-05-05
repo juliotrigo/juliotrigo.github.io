@@ -65,3 +65,10 @@
   list-style-type: none;
   margin-left: 1.1em;  /* Compensate for the margin that the bullets had */
  }
+
+ /**
+  * Profile picture
+  */
+.contact-list .u-photo {
+  border-radius: 50%;
+}
