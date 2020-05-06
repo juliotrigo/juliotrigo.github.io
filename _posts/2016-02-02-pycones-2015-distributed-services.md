@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "PyConES 2015 - Distributed services"
+author: Julio Trigo
 date: 2016-02-02 20:40:00 +0100
-last_modified_at: 2020-04-25 20:12:00 +0000
+last_modified_at: 2020-05-06 21:30:00 +0000
 permalink: /posts/pycones-2015-distributed-services/
 tags:
   - python

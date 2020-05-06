@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "PyConES 2019 - A practical DDD approach to Nameko microservices"
+author: Julio Trigo
 date: 2019-10-07 19:50:00 +0100
-last_modified_at: 2020-04-25 20:12:00 +0000
+modified_date: 2020-04-18 00:00:00 +0000
+last_modified_at: 2020-05-06 21:30:00 +0000
 permalink: /posts/pycones-2019-a-practical-ddd-approach-to-nameko-microservices/
 tags:
   - python

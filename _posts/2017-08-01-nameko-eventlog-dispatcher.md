@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Nameko Eventlog Dispatcher"
+author: Julio Trigo
 date: 2017-08-08 09:25:05 +0100
-last_modified_at: 2019-11-11 00:06:00 +0000
+modified_date: 2019-03-21 00:00:00 +0000
+last_modified_at: 2020-05-06 21:30:00 +0000
 permalink: /posts/nameko-eventlog-dispatcher/
 tags:
   - nameko
