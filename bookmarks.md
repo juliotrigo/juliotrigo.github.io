@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bookmarks
-last_modified_at: 2020-04-25 11:50:00 +0000
+last_modified_at: 2020-05-08 10:30:00 +0000
 permalink: /bookmarks/
 ---
 
@@ -63,10 +63,18 @@ Web
 * [Cool URIs don't change](https://www.w3.org/Provider/Style/URI.html)
 * [Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 * [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
-* [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+* [IndieWeb](https://indieweb.org/)
+* [POSSE - IndieWeb](https://indieweb.org/POSSE)
+* [IndieWebify.Me](https://indiewebify.me/)
+* [Microformats : Meaningful HTML](https://microformats.io/)
 * [WebPageTest - Website Performance and Optimization Test](https://www.webpagetest.org)
 * [Jamstack](https://jamstack.org/)
+* [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 * [JavaScript.info - The Modern JavaScript Tutorial](https://javascript.info/)
+
+W3C
+===
+* [Webmention](https://www.w3.org/TR/webmention/)
 
 Design
 ======
