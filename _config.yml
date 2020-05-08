@@ -17,9 +17,12 @@ title: Julio Trigo
 description: > # this means to ignore newlines until "baseurl:"
   ["Software engineer", "Scrum master (CSM)", "Python developer", "Team lead"]
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://blog.juliotrigo.com" # the base hostname & protocol for your site, e.g. http://example.com
-domain: "blog.juliotrigo.com"
-desktop_website: "http://juliotrigo.com"
+url: "https://www.juliotrigo.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+desktop_website: "http://desktop.juliotrigo.com"
+
+webmentions:
+  username: www.juliotrigo.com
 
 twitter_username: juliotrigo
 github_username: juliotrigo
