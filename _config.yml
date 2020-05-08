@@ -28,8 +28,14 @@ gravatar_photo: https://www.gravatar.com/avatar/380bab69599e9aa6c03e3fce2bb79a75
 
 author: Julio Trigo
 
+show_excerpts: true # set to true to show excerpts on the homepage
 excerpt_separator: "<!--more-->"
 excerpt_link_text: ...read more
+
+# Minima date format
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+minima:
+  date_format: "%b %-d, %Y"
 
 copyright: Copyright © 2013-2020 Julio Vicente Trigo Guijarro
 license_link_text: License &amp; copyright
