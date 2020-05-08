@@ -3,8 +3,9 @@ layout: post
 title: "Lato 2.0 Font Family"
 author: Julio Trigo
 date: 2019-11-12 23:47:00 +0100
-last_modified_at: 2020-05-06 21:30:00 +0000
-permalink: /posts/lato-2-0-font-family/
+last_modified_at: 2020-05-08 18:00:00 +0000
+permalink: /articles/lato-2-0-font-family/
+redirect_from: /posts/lato-2-0-font-family/
 tags:
   - lato
   - css

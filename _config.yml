@@ -19,12 +19,17 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.juliotrigo.com" # the base hostname & protocol for your site, e.g. http://example.com
 domain: "blog.juliotrigo.com"
+desktop_website: "http://juliotrigo.com"
 
 twitter_username: juliotrigo
 github_username: juliotrigo
 slides_username: juliotrigo
 
-gravatar_photo: https://www.gravatar.com/avatar/380bab69599e9aa6c03e3fce2bb79a75
+gravatar:
+  photo_url: https://www.gravatar.com/avatar/380bab69599e9aa6c03e3fce2bb79a75
+  photo_title: Julio Trigo's photo
+
+logo_title: Julio Trigo's logo
 
 author: Julio Trigo
 
@@ -46,8 +51,11 @@ powered_by: >
 
 header_pages:
   - about.md
-  - archive.md
+  - articles.md
   - bookmarks.md
+  - books.md
+  - projects.md
+  - presentations.md
 
 timezone: Europe/London
 

@@ -6,6 +6,20 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 #
 layout: home
-title: Articles
-last_modified_at: 2020-05-08 10:30:00 +0000
+title: Hi there 👋
+last_modified_at: 2020-05-08 18:00:00 +0000
 ---
+
+I'm a Software Engineer based in A̶l̶i̶c̶a̶n̶t̶e̶ L̶o̶n̶d̶o̶n̶ Valencia 🏠.
+
+I currently work at <a href="https://www.sohonet.com/">Sohonet <img src="/assets/images/sohonet-logo.png" alt="Sohonet's logo" /></a> building a real-time remote review and collaboration product called <a href="https://www.sohonet.com/clearview-flex/">ClearView Flex</a>.
+
+Here you can find the <a href="{% link articles.md %}">articles 🖋</a> that I have published.
+
+You can see the <a href="{% link projects.md %}">projects 💾</a> I work on.
+
+These are the <a href="{% link presentations.md %}">presentations 📢</a> that I have given at conferences.
+
+These are the <a href="{% link books.md %}">books 📚</a> I have reviewed.
+
+I also save some <a href="{% link bookmarks.md %}">bookmarks 🔖</a> that I find useful.

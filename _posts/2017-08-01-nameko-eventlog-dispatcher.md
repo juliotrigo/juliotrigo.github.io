@@ -4,8 +4,9 @@ title: "Nameko Eventlog Dispatcher"
 author: Julio Trigo
 date: 2017-08-08 09:25:05 +0100
 modified_date: 2019-03-21 00:00:00 +0000
-last_modified_at: 2020-05-06 21:30:00 +0000
-permalink: /posts/nameko-eventlog-dispatcher/
+last_modified_at: 2020-05-08 18:00:00 +0000
+permalink: /articles/nameko-eventlog-dispatcher/
+redirect_from: /posts/nameko-eventlog-dispatcher/
 tags:
   - nameko
   - python

@@ -3,9 +3,11 @@ layout: post
 title: "Unicode strings and bytestrings in Python 2"
 author: Julio Trigo
 date: 2015-04-21 20:24:00 +0100
-last_modified_at: 2020-05-06 21:30:00 +0000
-permalink: /posts/unicode-strings-and-bytestrings-in-python-2/
-redirect_from: /2015/04/unicode-strings-and-bytestrings-in-python-2.html
+last_modified_at: 2020-05-08 18:00:00 +0000
+permalink: /articles/unicode-strings-and-bytestrings-in-python-2/
+redirect_from:
+  - /2015/04/unicode-strings-and-bytestrings-in-python-2.html
+  - /posts/unicode-strings-and-bytestrings-in-python-2/
 tags:
   - python
   - unicode

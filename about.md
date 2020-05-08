@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-last_modified_at: 2020-04-18 11:55:00 +0000
+last_modified_at: 2020-05-08 18:00:00 +0000
 permalink: /about/
 redirect_from: /p/about-this-blog.html
 ---
@@ -38,26 +38,3 @@ redirect_from: /p/about-this-blog.html
     }
 }
 ```
-
-I am the creator and main maintainer of the following open source projects:
-
-<ul class="nobull">
-    <li><i class="material-icons">code</i><a href="https://github.com/juliotrigo/sqlalchemy-filters">sqlalchemy-filters</a></li>
-    <li><i class="material-icons">code</i><a href="https://github.com/juliotrigo/today-sublime-color-scheme">today-sublime-color-scheme</a></li>
-    <li><i class="material-icons">code</i><a href="https://github.com/sohonetlabs/nameko-rediskn">nameko-rediskn</a></li>
-    <li><i class="material-icons">code</i><a href="https://github.com/sohonetlabs/nameko-eventlog-dispatcher">nameko-eventlog-dispatcher</a></li>
-</ul>
-
-You can find my talks and presentations here:
-
-<ul class="nobull">
-    <li><i class="material-icons">slideshow</i><a href="{% post_url 2019-10-07-pycones-2019-a-practical-ddd-approach-to-nameko-microservices %}">A practical DDD approach to Nameko microservices</a></li>
-    <li><i class="material-icons">slideshow</i><a href="{% post_url 2016-02-02-pycones-2015-distributed-services %}">Distributed services with Django, Boto, and SQS queues</a></li>
-</ul>
-
-I am also one of the technical reviewers of the following books, by [Fabrizio Romano](https://www.fabrizio.online/):
-
-<ul class="nobull">
-    <li><i class="material-icons">menu_book</i><a href="https://www.fabrizio.online/learn-python-programming">Learn Python Programming (2nd Ed.)</a> - Pack Publishing - June 2018</li>
-    <li><i class="material-icons">menu_book</i><a href="https://www.fabrizio.online/learning-python">Learning Python (1st ed.)</a> - Pack Publishing - Dec. 2015</li>
-</ul>
