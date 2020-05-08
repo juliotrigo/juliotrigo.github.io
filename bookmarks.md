@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bookmarks
-last_modified_at: 2020-05-08 10:30:00 +0000
+last_modified_at: 2020-05-08 18:00:00 +0000
 permalink: /bookmarks/
 ---
 
@@ -60,7 +60,7 @@ Agile
 Web
 ---
 
-* [Cool URIs don't change](https://www.w3.org/Provider/Style/URI.html)
+* [www. is not deprecated](https://www.yes-www.org/)
 * [Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 * [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
 * [IndieWeb](https://indieweb.org/)
@@ -74,6 +74,7 @@ Web
 
 W3C
 ===
+* [Cool URIs don't change](https://www.w3.org/Provider/Style/URI.html)
 * [Webmention](https://www.w3.org/TR/webmention/)
 
 Design
