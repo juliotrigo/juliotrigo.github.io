@@ -8,7 +8,7 @@ redirect_from: /p/about-this-blog.html
 
 ```json
 {
-    "name": "Julio Trigo",
+    "name": "{{ site.author | normalize_whitespace | escape }}",
     "alumnus": {
         "university": "University of Alicante",
         "degree": "Computer Science Engineering"
@@ -22,19 +22,19 @@ redirect_from: /p/about-this-blog.html
     },
     "company": "C̶e̶s̶s̶e̶r̶ W̶e̶b̶f̶u̶s̶i̶o̶n̶ R̶a̶z̶o̶r̶ ̶O̶c̶c̶a̶m̶ S̶t̶u̶d̶e̶n̶t̶.̶c̶o̶m̶ Sohonet",
     "website": {
-        "url": "https://www.juliotrigo.com"
+        "url": "{{ site.url | normalize_whitespace | escape }}"
     },
     "twitter": {
-        "url": "https://twitter.com/juliotrigo"
+        "url": "https://twitter.com/{{ site.twitter_username | normalize_whitespace | escape }}"
     },
     "github": {
-        "url": "https://github.com/juliotrigo"
+        "url": "https://github.com/{{ site.github_username | normalize_whitespace | escape }}"
     },
     "pypi": {
-        "url": "https://pypi.org/user/juliotrigo"
+        "url": "https://pypi.org/user/{{ site.pypi_username | normalize_whitespace | escape }}"
     },
     "slides.com": {
-        "url": "https://slides.com/juliotrigo"
+        "url": "https://slides.com/{{ site.slides_username | normalize_whitespace | escape }}"
     }
 }
 ```
