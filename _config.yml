@@ -37,7 +37,7 @@ logo_title: Julio Trigo's logo
 
 author: Julio Trigo
 
-include: _redirects
+include: [_redirects]
 
 show_excerpts: true # set to true to show excerpts on the homepage
 excerpt_separator: "<!--more-->"
