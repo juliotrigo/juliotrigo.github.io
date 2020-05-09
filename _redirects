@@ -1,0 +1,5 @@
+# Redirect default Netlify subdomain to primary domain
+https://upbeat-payne-dcaf19.netlify.app/* https://www.juliotrigo.com/:splat 301!
+
+# Redirect old subdomain to primary domain
+https://blog.juliotrigo.com/* https://www.juliotrigo.com/:splat 301!

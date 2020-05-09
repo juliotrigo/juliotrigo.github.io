@@ -20,5 +20,3 @@ I also designed the following <a href="https://www.sublimetext.com/">Sublime</a>
 </ul>
 
 I have created the content of <a href="https://github.com/juliotrigo/juliotrigo.github.io">this website <img src="/assets/images/juliotrigo-logo-23.png" alt="{{- site.logo_title | escape -}}" /></a> usinng <a href="https://jekyllrb.com/">Jekyll</a> and a customized <a href="https://github.com/jekyll/minima">Minima</a> theme.
-
-This was <a href="{{ site.desktop_website | normalize_whitespace | escape }}">my first personal website <img src="/assets/images/juliotrigo-logo-23.png" alt="{{- site.logo_title | escape -}}" /></a>, which I had so much fun building.

@@ -27,6 +27,7 @@ webmentions:
 twitter_username: juliotrigo
 github_username: juliotrigo
 slides_username: juliotrigo
+pypi_username: juliotrigo
 
 gravatar:
   photo_url: https://www.gravatar.com/avatar/380bab69599e9aa6c03e3fce2bb79a75
@@ -35,6 +36,8 @@ gravatar:
 logo_title: Julio Trigo's logo
 
 author: Julio Trigo
+
+include: [_redirects]
 
 show_excerpts: true # set to true to show excerpts on the homepage
 excerpt_separator: "<!--more-->"
@@ -57,8 +60,8 @@ header_pages:
   - articles.md
   - bookmarks.md
   - books.md
-  - projects.md
   - presentations.md
+  - projects.md
 
 timezone: Europe/London
 
