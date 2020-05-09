@@ -58,8 +58,8 @@ header_pages:
   - articles.md
   - bookmarks.md
   - books.md
-  - projects.md
   - presentations.md
+  - projects.md
 
 timezone: Europe/London
 
