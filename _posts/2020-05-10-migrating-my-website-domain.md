@@ -186,7 +186,7 @@ https://my-subdomain.netlify.app/
 
 ## Things I've learned
 
-* Using `www` as the primary domain has some benefits
+* The benefits of using `www` as the primary domain
 * The functionality that Netlify provides on their *Starter* free plan is quite powerful and simple to use
 * The SSL/TLS certificate that Netlify issues can cover extra subdomains (free of charge)
 * The `_redirects` file is a simple way of doing HTTP redirects
