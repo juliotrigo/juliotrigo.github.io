@@ -7,7 +7,7 @@
 #
 layout: home
 title: Hi there 👋
-last_modified_at: 2020-05-08 18:00:00 +0000
+last_modified_at: 2020-05-10 21:00:00 +0000
 ---
 
 I'm a Software Engineer based in A̶l̶i̶c̶a̶n̶t̶e̶ L̶o̶n̶d̶o̶n̶ Valencia 🏠.
@@ -22,4 +22,4 @@ These are the <a href="{% link presentations.md %}">presentations 📢</a> that 
 
 These are the <a href="{% link books.md %}">books 📚</a> I have reviewed.
 
-I also save some <a href="{% link bookmarks.md %}">bookmarks 🔖</a> that I find useful.
+I also save <a href="{% link bookmarks.md %}">bookmarks 🔖</a> that I find useful.
