@@ -1,11 +1,22 @@
 <head>
+
+  {%- capture title -%}{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}{%- endcapture -%}
+  {%- capture description -%}{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}{%- endcapture -%}
+  {%- capture twitter_username -%}{{ site.twitter_username | escape }}{%- endcapture -%}
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{{ site.author | normalize_whitespace | escape }}">
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta name="description" content="{{ description }}">
 
-  <title>{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@{{ twitter_username }}" />
+  <meta name="twitter:creator" content="@{{ twitter_username }}">
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ description }}" />
+
+  <title>{{ title }}</title>
 
   <link rel="shortcut icon" href="/logo32.png" type="image/png" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
