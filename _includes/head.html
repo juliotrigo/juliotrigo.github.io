@@ -1,11 +1,27 @@
 <head>
+
+  {%- capture title -%}{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}{%- endcapture -%}
+  {%- capture description -%}{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}{%- endcapture -%}
+  {%- capture canonical -%}{{ page.url | replace:'index.html','' | absolute_url }}{%- endcapture -%}
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{{ site.author | normalize_whitespace | escape }}">
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta name="description" content="{{ description }}">
 
-  <title>{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:url" content="{{ canonical }}" />
+  <meta property="og:site_name" content="{{ site.title | strip_html | normalize_whitespace }}" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@{{ site.twitter_username }}" />
+  <meta name="twitter:creator" content="@{{ site.twitter_username }}">
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ description }}" />
+
+  <title>{{ title }}</title>
 
   <link rel="shortcut icon" href="/logo32.png" type="image/png" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -17,7 +33,7 @@
   {% endif %}
 
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}" />
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
+  <link rel="canonical" href="{{ canonical }}" />
 
   <link rel="webmention" href="https://webmention.io/{{ site.webmentions.username | normalize_whitespace | escape }}/webmention" />
   <link rel="pingback" href="https://webmention.io/{{ site.webmentions.username | normalize_whitespace | escape }}/xmlrpc" />
