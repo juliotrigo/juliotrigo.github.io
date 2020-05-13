@@ -3,7 +3,8 @@ layout: post
 title: "Migrating my website domain"
 author: Julio Trigo
 date: 2020-05-10 22:00:00 +0100
-last_modified_at: 2020-05-10 22:00:00 +0100
+modified_date: 2020-05-13 17:20:00 +0000
+last_modified_at: 2020-05-13 17:20:00 +0000
 permalink: /articles/migrating-my-website-domain/
 tags:
   - domain names
@@ -102,6 +103,12 @@ Build command: jekyll build
 Publish directory: _site/
 ```
 
+* Set environment variables to be used during the build process
+
+```yaml
+JEKYLL_ENV: production
+```
+
 * Build and deploy the website
 
 ### 2) HTTPS setup
@@ -190,3 +197,7 @@ https://my-subdomain.netlify.app/
 * The functionality that Netlify provides on their *Starter* free plan is quite powerful and simple to use
 * The SSL/TLS certificate that Netlify issues can cover extra subdomains (free of charge)
 * The `_redirects` file is a simple way of doing HTTP redirects
+
+***2020-05-13 - Update:***
+
+Set environment variables to be used during the build process.
