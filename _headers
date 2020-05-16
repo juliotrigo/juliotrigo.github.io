@@ -10,3 +10,6 @@
 
   # Block pages from loading when they detect reflected XSS attacks
   X-XSS-Protection: 1; mode=block
+
+  # Do not send the referrer header when navigating from HTTPS to HTTP
+  Referrer-Policy: no-referrer-when-downgrade
