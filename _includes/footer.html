@@ -31,7 +31,14 @@
           {% if site.slides_username %}
             <li>{% include icon-slides.html %}</li>
           {% endif %}
-          <li>{% include icon-rss-feed.html %}</li>
+          <li class="feed-subscribe">
+            <a href="{{ 'feed.xml' | relative_url }}">
+              <svg class="svg-icon orange">
+                <title>RSS feed</title>
+                <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
+              </svg><span>RSS feed</span>
+            </a>
+          </li>
         </ul>
       </div>
 
