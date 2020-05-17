@@ -9,11 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{{ site.author | normalize_whitespace | escape }}">
   <meta name="description" content="{{ description }}">
+  <meta name="generator" content="Jekyll v{{ jekyll.version }}" />
 
+  {% if page.date %}
+  <meta property="og:type" content="article" />
+  {% endif %}
+  <meta property="og:locale" content="{{ site.lang | replace:'-','_' }}" />
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:description" content="{{ description }}" />
   <meta property="og:url" content="{{ canonical }}" />
-  <meta property="og:site_name" content="{{ site.title | strip_html | normalize_whitespace }}" />
+  <meta property="og:site_name" content="{{ site.title | strip_html | normalize_whitespace | escape  }}" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@{{ site.twitter_username }}" />
@@ -28,11 +33,11 @@
 
   {% if site.google_font %}
     {% for link in site.google_font %}
-      <link href="{{ link.url }}" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="{{ link.url }}" type="text/css" />
     {% endfor %}
   {% endif %}
 
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}" />
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}" type="text/css" />
   <link rel="canonical" href="{{ canonical }}" />
 
   <link rel="webmention" href="https://webmention.io/{{ site.webmentions.username | normalize_whitespace | escape }}/webmention" />
