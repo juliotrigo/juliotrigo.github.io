@@ -6,10 +6,10 @@ permalink: /articles/
 redirect_from: /archive/
 ---
 
-<ul>
+<ul class="post-archive nobull">
   {% for post in site.posts %}
     <li>
-        <span class="date">{{ post.date | date: '%Y-%m-%d' }}</span>
+        <span class="post-meta">{{ post.date | date: '%Y-%m-%d' }}</span>
         <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
