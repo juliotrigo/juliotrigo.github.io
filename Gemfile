@@ -29,5 +29,5 @@ gem "github-pages", group: :jekyll_plugins
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
+# Add the webrick gem to make Jekyll work with Ruby 3.x
 gem "webrick", "~> 1.8"
