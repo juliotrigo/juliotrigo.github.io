@@ -3,7 +3,7 @@ layout: post
 title: "PyConES 2019 - A practical DDD approach to Nameko microservices"
 author: Julio Trigo
 date: 2019-10-07 19:50:00 +0100
-modified_date: 2020-04-18 00:00:00 +0000
+modified_date: 2020-04-18 18:00:00 +0000
 last_modified_at: 2020-05-08 18:00:00 +0000
 permalink: /articles/pycones-2019-a-practical-ddd-approach-to-nameko-microservices/
 redirect_from: /posts/pycones-2019-a-practical-ddd-approach-to-nameko-microservices/
@@ -32,3 +32,7 @@ Here's the excerpt of the talk:
 *We will also show **a practical domain-driven design (DDD) approach to building a microservices architecture**, showing how the design of the solution is driven by the domain of the application, the different types of services that we create (application/facades, domain), what their responsibilities are and how they can communicate with each other.*
 
 *Finally, we will discuss one of the most important things in software design: how/when to **split our code into different components** (services, dependencies, modules, functions, etc.) so that they serve a single purpose, are easy to understand/extend and “fit in your head”.*
+
+***2020-04-18 - Update:***
+
+YouTube video added.

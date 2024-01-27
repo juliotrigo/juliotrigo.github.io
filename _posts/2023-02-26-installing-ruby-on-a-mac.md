@@ -3,7 +3,6 @@ layout: post
 title: "Installing Ruby on a Mac"
 author: Julio Trigo
 date: 2023-02-28 20:45:00 +0100
-modified_date: 2023-02-28 20:45:00 +0100
 last_modified_at: 2023-02-28 20:45:00 +0100
 permalink: /articles/installing-ruby-on-a-mac/
 tags:

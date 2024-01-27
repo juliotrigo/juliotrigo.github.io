@@ -3,7 +3,6 @@ layout: post
 title: "Installing Node.js and npm on a Mac"
 author: Julio Trigo
 date: 2024-01-27 12:15:00 +0100
-modified_date: 2024-01-27 12:15:00 +0100
 last_modified_at: 2024-01-27 12:15:00 +0100
 permalink: /articles/installing-nodejs-and-npm-on-a-mac/
 tags:
