@@ -14,7 +14,7 @@ redirect_from: /p/about-this-blog.html
         "degree": "Computer Science Engineering"
     },
     "occupation": [
-        "Software engineer", "Scrum master (CSM)", "Python developer", "Team lead"
+        "Software engineer", "Scrum master (CSM)", "Python developer", "Team lead", "Dev lead"
     ],
     "address": {
         "city": "A̶l̶i̶c̶a̶n̶t̶e̶ L̶o̶n̶d̶o̶n̶ Valencia",
