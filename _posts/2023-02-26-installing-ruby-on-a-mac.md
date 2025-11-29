@@ -16,8 +16,12 @@ tags:
 
 ---
 
-There are already quite a few guides and articles that explain how to install Ruby so I don't intend to create another one.
-What I'm going to do is to document the steps I took to install Ruby on my Mac and summarise how I made it work.
+There are already quite a few guides and articles that explain how to install Ruby, so I don't
+intend to write just another one.
+
+Instead, I’m going to document the steps I followed to install Ruby on my Mac, describe the approach
+I chose, and summarise the commands I used. These notes are meant to serve as my personal technical
+reference and to help clarify how the Ruby installation process works.
 
 <!--more-->
 
@@ -35,7 +39,7 @@ And an article about configuring Bundler to [install gems in the project directo
 
 I’m going to use [chruby](https://github.com/postmodern/chruby) as a Ruby version manager and [ruby-install](https://github.com/postmodern/ruby-install) as a tool to install Ruby.
 
-They can be both installed using [Homebrew](https://brew.sh/).
+They can both be installed using [Homebrew](https://brew.sh/).
 
 ```shell
 $ brew install chruby ruby-install
@@ -82,7 +86,7 @@ ruby-3.4.5 ruby-3.4.7
 
 ## Configure chruby in the shell
 
-The next step is to configure `chruby` in the shell (it assumes we’re using  `zsh`):
+The next step is to configure `chruby` in the shell (it assumes we're using `zsh`):
 
 ```shell
 # Load and enable chruby
@@ -105,7 +109,7 @@ source ~/.zshrc
 
 ## Check the installation
 
-Check that we’re using the right version of Ruby, which already comes with `bundle` installed:
+Check that we’re using the right version of Ruby, which already comes with Bundler installed:
 
 ```shell
 $ ruby -v
@@ -143,11 +147,11 @@ ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +PRISM [arm64-darwin24]
 ## Set the Ruby version in the project
 
 It's recommended to create a `.ruby-version` file to both document the Ruby version and
-to enable the auto-switch mechanism.
+enable the auto-switch mechanism.
 
 ```shell
 $ cd my_project
-$ echo '3.4.5' >> .ruby-version
+$ echo '3.4.5' > .ruby-version
 ```
 
 `chruby` will auto-switch Ruby versions based on the presence of a `.ruby-version` file in
@@ -184,7 +188,7 @@ We can now use Bundler to install the gems:
 $ bundle install
 ```
 
-Bundler in the standard tool in Ruby for managing project dependencies.
+Bundler is the standard tool in Ruby for managing project dependencies.
 
 ### Installation location
 
@@ -200,7 +204,7 @@ not patch version. So Ruby `3.4.5` and `3.4.7` share the same gem directory (`~/
 
 **Notes**:
 - By default, all projects using the same Ruby version share the same gem installation directory
-- Bundler doesn't isolate gems by installation directory (not filesystem isolation)
+- Bundler doesn't provide filesystem isolation for gems by default
 - Bundler isolates gems at runtime through the load path (`$LOAD_PATH`)
 - Multiple versions of the same gem can coexist in the gem installation directory
 - Bundler achieves isolation by manipulating the load path to include only the gems specified
@@ -237,7 +241,6 @@ Subsequent bundle install commands will install gems in the `vendor/bundle` fold
 ```shell
 $ gem env
 RubyGems Environment:
-  RubyGems Environment:
   - RUBYGEMS VERSION: 3.6.9
   - RUBY VERSION: 3.4.7 (2025-10-08 patchlevel 58) [arm64-darwin24]
   - INSTALLATION DIRECTORY: /Users/<username>/.gem/ruby/3.4.7
@@ -280,7 +283,7 @@ RubyGems Environment:
   - Gem isolation per project at runtime: applications only load gems specified in the
     `Gemfile.lock` file
 
-***2015-11-29 - Update:***
+***2025-11-29 - Update:***
 
 - All the sections are now up to date
 - Ruby versions updated
