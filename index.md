@@ -12,8 +12,11 @@ last_modified_at: 2020-05-10 21:00:00 +0000
 
 I'm a Software Engineer based in A̶l̶i̶c̶a̶n̶t̶e̶ L̶o̶n̶d̶o̶n̶ Valencia 🏠.
 
-I currently work at <a href="https://www.sohonet.com/">Sohonet <img src="/assets/images/sohonet-logo.png" alt="Sohonet's logo" /></a> building [Filerunner](https://www.sohonet.com/solutions/file-transfer-cloud-storage/filerunner/),
-a product that helps to share files of unlimited size through the browser, with no plug-ins, software or server installs.
+I currently work at <a href="https://www.sohonet.com/">Sohonet <img src="/assets/images/sohonet-logo.png" alt="Sohonet's logo" /></a> building a real-time collaboration product called
+[ClearView Flex](https://www.sohonet.com/product/clearview-flex), which has won
+an [Engineering Emmy® Award](https://www.emmys.com/news/awards-news/engineering-201008)
+on the [72nd Engineering Emmy Awards](https://youtu.be/M2mnOZJEr84?t=1299) in 2020 (Sohonet’s [acceptance speech](https://vimeo.com/473410773) and [article](https://www.sohonet.com/article/clearview-flex-wins-advancing-remote-collaboration-engineering-emmy-r))
+and a [Lumiere Award](https://www.sohonet.com/article/sohonet-honoured-with-lumiere-award-from-the-advanced-imaging-society-for-clearview-flex) from [The Advanced Imaging Society](https://theadvancedimagingsociety.com/) on the [11th Annual Entertainment Technology Lumiere Awards](https://www.youtube.com/watch?v=SynlNkvuz4o&t=1755s) in 2021.
 
 Here you can find the <a href="{% link articles.md %}">articles 🖋</a> that I have published.
 
