@@ -192,23 +192,20 @@ Bundler is the standard tool in Ruby for managing project dependencies.
 
 ### Installation location
 
-Gems are installed in the `~/.gem` folder and segregated by Ruby minor version (`3.3`, `3.4`),
-not patch version. So Ruby `3.4.5` and `3.4.7` share the same gem directory (`~/.gem/ruby/3.4.0/`).
+With `chruby`, gems are installed in `~/.gem/ruby/<version>` where `<version>` is the full Ruby
+version (e.g., `3.4.7`). Each Ruby installation has its own separate gem directory.
 
-`bundle install` normally installs gems in the same location as `gem install`. A few exceptions
-(not all) are:
-- If we've set up a custom `bundle` path (see [next section](#isolate-gems-per-project))
-  - If `.bundle/config` exists with a path
-  - The `BUNDLE_PATH` environment variable is set
-- If we're using the `--deployment` flag
+`bundle install` installs gems in the same location as `gem install`, unless:
+- A custom Bundler path has been configured (see [next section](#isolate-gems-per-project))
+- The `BUNDLE_PATH` environment variable is set
+- The `--deployment` flag is used (which defaults to `vendor/bundle`)
 
 **Notes**:
 - By default, all projects using the same Ruby version share the same gem installation directory
 - Bundler doesn't provide filesystem isolation for gems by default
-- Bundler isolates gems at runtime through the load path (`$LOAD_PATH`)
+- Bundler isolates gems at runtime by manipulating the load path (`$LOAD_PATH`) to include only
+  the gems specified in the project's `Gemfile.lock`
 - Multiple versions of the same gem can coexist in the gem installation directory
-- Bundler achieves isolation by manipulating the load path to include only the gems specified
-  in the project's `Gemfile.lock`
 
 ### Isolate gems per project
 
