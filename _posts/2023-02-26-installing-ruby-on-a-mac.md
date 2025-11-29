@@ -3,12 +3,16 @@ layout: post
 title: "Installing Ruby on a Mac"
 author: Julio Trigo
 date: 2023-02-28 20:45:00 +0100
-last_modified_at: 2024-01-27 12:15:00 +0100
+modified_date: 2025-11-29 16:45:00 +0100
+last_modified_at: 2025-11-29 16:45:00 +0100
 permalink: /articles/installing-ruby-on-a-mac/
 tags:
   - Ruby
   - chruby
   - ruby-install
+  - bundle
+  - ruby-version
+  - gem
 
 ---
 
@@ -21,9 +25,12 @@ This is another article that explains the benefits of using `chruby`: [why I use
 
 The [Why You Should Never Use sudo to Install Ruby Gems](https://www.moncefbelyamani.com/why-you-should-never-use-sudo-to-install-ruby-gems/) article is also worth reading.
 
+And an article about configuring Bundler to [install gems in the project directory](https://guilhermesimoes.github.io/blog/installing-gems-per-project-directory).
+
 <!--more-->
 
 ## Install chruby and ruby-install
+
 I’m going to use [chruby](https://github.com/postmodern/chruby) as a Ruby version manager and [ruby-install](https://github.com/postmodern/ruby-install) as a tool to install Ruby.
 
 They can be both installed using [Homebrew](https://brew.sh/).
@@ -32,133 +39,248 @@ They can be both installed using [Homebrew](https://brew.sh/).
 $ brew install chruby ruby-install
 ```
 
-## Install Ruby using ruby-install
+## Install Ruby versions
 
 Then we can install all the Ruby versions that we need with `ruby-install`:
 
 ```shell
-$ ruby-install 2.7.7
->>> Updating ruby versions ...
->>> Installing ruby 2.7.7 into /Users/<username>/.rubies/ruby-2.7.7 ...
->>> Installing dependencies for ruby 2.7.7 ...
-# ...
->>> Successfully installed ruby 2.7.7 into /Users/<username>/.rubies/ruby-2.7.7
+$ ruby-install 3.4.7
+>>> Installing ruby 3.4.7 into /Users/<username>/.rubies/ruby-3.4.7 ...
+>>> Installing dependencies for ruby 3.4.7 ...
+>>> Downloading https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.7.tar.xz into /Users/<username>/
+>>> Verifying ruby-3.4.7.tar.xz ...
+>>> Extracting ruby-3.4.7.tar.xz to /Users/<username>/src/ruby-3.4.7 ...
+>>> Configuring ruby 3.4.7 ...
+>>> Cleaning ruby 3.4.7 ...
+>>> Compiling ruby 3.4.7 ...
+>>> Installing ruby 3.4.7 ...
+installing bundled gems:            /Users/<username>/.rubies/ruby-3.4.7/lib/ruby/gems/3.4.0
+>>> Successfully installed ruby 3.4.7 into /Users/<username>/.rubies/ruby-3.4.7
 
-$ ruby-install 3.1.3
->>> Installing ruby 3.1.3 into /Users/<username>/.rubies/ruby-3.1.3 ...
->>> Installing dependencies for ruby 3.1.3 ...
-# ...
-installing bundled gem cache:       /Users/<username>/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/cache
->>> Successfully installed ruby 3.1.3 into /Users/<username>/.rubies/ruby-3.1.3
+$ ruby-install 3.4.5
+>>> Installing ruby 3.4.5 into /Users/<username>/.rubies/ruby-3.4.5 ...
+>>> Installing dependencies for ruby 3.4.5 ...
+>>> Downloading https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.5.tar.xz into /Users/<username>/src ...
+>>> Verifying ruby-3.4.5.tar.xz ...
+>>> Extracting ruby-3.4.5.tar.xz to /Users/<username>/src/ruby-3.4.5 ...
+>>> Configuring ruby 3.4.5 ...
+>>> Cleaning ruby 3.4.5 ...
+>>> Compiling ruby 3.4.5 ...
+>>> Installing ruby 3.4.5 ...
+installing bundled gems:            /Users/<username>/.rubies/ruby-3.4.5/lib/ruby/gems/3.4.0
+>>> Successfully installed ruby 3.4.5 into /Users/<username>/.rubies/ruby-3.4.5
+```
+
+Ruby versions are installed in the `~/.rubies/` folder by default:
+
+```shell
+$ ls ~/.rubies
+ruby-3.4.5 ruby-3.4.7
 ```
 
 ## Configure chruby in the shell
 
-The next step is to configure `chruby` in the shell:
+The next step is to configure `chruby` in the shell (it assumes we’re using  `zsh`):
 
-```bash
+```shell
+# Load and enable chruby
 $ echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+
+# Enable auto-switching of Rubies specified by .ruby-version files
 $ echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
-$ echo "chruby ruby-3.1.3" >> ~/.zshrc
+
+# Set the default Ruby version, which should have previously been installed
+# Without this, we’d need to manually call `chruby` every time we want to use
+# something different than the system Ruby
+$ echo "chruby ruby-3.4.7" >> ~/.zshrc
 ```
 
-A few notes:
-* The Ruby version in `chruby ruby-3.1.3` should match the version of Ruby that we want to use,
-  which should have previously been installed
-* Without that third line, we’d need to manually call `chruby` every time we want to use something
-  different than the system Ruby
-* It assumes we’re using  `zsh`
+## Reload the shell
+
+```shell
+source ~/.zshrc
+```
 
 ## Check the installation
 
-In a new terminal (once the additions to `.zshrc` have been executed),
-check that we’re using the right version of Ruby, which already comes with `bundle` installed:
+Check that we’re using the right version of Ruby, which already comes with `bundle` installed:
 
 ```shell
 $ ruby -v
-ruby 3.1.3p185 (2022-11-24 revision 1a6b16756e) [x86_64-darwin21]
+ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +PRISM [arm64-darwin24]
 
 $ bundle --version
-Bundler version 2.3.26
+Bundler version 2.6.9
 ```
 
-At this point, we already have Ruby `3.1.3` installed and activated!
+At this point, we already have Ruby `3.4.7` installed and activated!
 
 ## List available Ruby versions
 
 ```shell
 $ chruby
-   ruby-2.7.7
- * ruby-3.1.3
+   ruby-3.4.5
+ * ruby-3.4.7
 ```
 
 ## Switch between Ruby versions
 
 ```shell
 $ ruby -v
-ruby 3.1.3p185 (2022-11-24 revision 1a6b16756e) [x86_64-darwin21]
-$ chruby 2.7.7
+ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +PRISM [arm64-darwin24]
+
+$ chruby 3.4.5
 $ ruby -v
-ruby 2.7.7p221 (2022-11-24 revision 168ec2b1e5) [x86_64-darwin21]
-$ chruby 3.1.3
+ruby 3.4.5 (2025-07-16 revision 20cda200d3) +PRISM [arm64-darwin24]
+
+$ chruby 3.4.7
 $ ruby -v
-ruby 3.1.3p185 (2022-11-24 revision 1a6b16756e) [x86_64-darwin21]
+ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +PRISM [arm64-darwin24]
 ```
 
-## Set the Ruby version in the repository
-
-`chruby` will auto-switch Ruby versions based on the presence of a `.ruby-version` file in
-the folder we `cd` to.
-
-**NOTE**: this assumes that the `auto.sh` script has been sourced in the `.zshrc` file,
-as described in one of the previous sections.
+## Set the Ruby version in the project
 
 It's recommended to create a `.ruby-version` file to both document the Ruby version and
 to enable the auto-switch mechanism.
 
 ```shell
-$ cd /full/path/to/my_project
-$ echo '3.1.3' >> .ruby-version
+$ cd my_project
+$ echo '3.4.5' >> .ruby-version
 ```
 
-**NOTE**: remember not to add any trailing newlines to this file, as mentioned
-[here](https://docs.netlify.com/configure-builds/manage-dependencies/#ruby).
-
-Verify that it's working:
+`chruby` will auto-switch Ruby versions based on the presence of a `.ruby-version` file in
+the folder we `cd` to.
 
 ```shell
 $ ruby -v
-ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.x86_64-darwin21]
+ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +PRISM [arm64-darwin24]
+
 $ cd my_project
 $ ruby -v
-ruby 3.1.3p185 (2022-11-24 revision 1a6b16756e) [x86_64-darwin21]
+ruby 3.4.5 (2025-07-16 revision 20cda200d3) +PRISM [arm64-darwin24]
+
+$ cd ..
+$ ruby -v
+ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.arm64e-darwin24]
 ```
+
+If you then `cd` into a different directory that either doesn't have a `.ruby-version`
+file or if the `.ruby-version` file is set to a Ruby version that `chruby` doesn't know
+about, then `chruby` will revert to the *system* Ruby on my Mac (`2.6.10` in this case).
+
+**Notes**:
+- This assumes that the `auto.sh` script has been sourced in the `.zshrc` file,
+  as described in one of the [previous sections](#configure-chruby-in-the-shell).
+- Remember not to add any trailing newlines to this file, as mentioned
+  [here](https://docs.netlify.com/configure-builds/manage-dependencies/#ruby).
 
 ## Install Ruby gems
 
-We can now install gems with `gem install` or use bundler to install them:
+We can now use Bundler to install the gems:
 
 ```shell
-$ bundle add webrick
 $ bundle install
 ```
 
-And check the RubyGems paths:
+Bundler in the standard tool in Ruby for managing project dependencies.
+
+### Installation location
+
+Gems are installed in the `~/.gem` folder and segregated by Ruby minor version (`3.3`, `3.4`),
+not patch version. So Ruby `3.4.5` and `3.4.7` share the same gem directory (`~/.gem/ruby/3.4.0/`).
+
+`bundle install` normally installs gems in the same location as `gem install`. A few exceptions
+(not all) are:
+- If we've set up a custom `bundle` path (see [next section](#isolate-gems-per-project))
+  - If `.bundle/config` exists with a path
+  - The `BUNDLE_PATH` environment variable is set
+- If we're using the `--deployment` flag
+
+**Notes**:
+- By default, all projects using the same Ruby version share the same gem installation directory
+- Bundler doesn't isolate gems by installation directory (not filesystem isolation)
+- Bundler isolates gems at runtime through the load path (`$LOAD_PATH`)
+- Multiple versions of the same gem can coexist in the gem installation directory
+- Bundler achieves isolation by manipulating the load path to include only the gems specified
+  in the project's `Gemfile.lock`
+
+### Isolate gems per project
+
+We could also choose to use filesystem isolation per project by installing gems locally in
+`vendor/bundle` and configuring Bundler to use it:
+
+```shell
+# Add the Bundle path to the Bundle config
+bundle config set --local path 'vendor/bundle'
+
+# Install the gems in the Bundle path specified in the Bundle config
+bundle install
+
+# Add these files to .gitignore
+echo "vendor/bundle/" >> .gitignore
+echo ".bundle/" >> .gitignore
+```
+
+The `bundle config` command above creates a `.bundle/config` file that remembers this setting:
+
+```yaml
+---
+BUNDLE_PATH: "vendor/bundle"
+```
+
+Subsequent bundle install commands will install gems in the `vendor/bundle` folder.
+
+## Check the gem environment
 
 ```shell
 $ gem env
 RubyGems Environment:
-  - RUBYGEMS VERSION: 3.3.26
-  - RUBY VERSION: 3.1.3 (2022-11-24 patchlevel 185) [x86_64-darwin21]
-  - INSTALLATION DIRECTORY: /Users/<username>/.gem/ruby/3.1.3
-  - USER INSTALLATION DIRECTORY: /Users/<username>/.gem/ruby/3.1.0
-  - RUBY EXECUTABLE: /Users/<username>/.rubies/ruby-3.1.3/bin/ruby
-  - EXECUTABLE DIRECTORY: /Users/<username>/.gem/ruby/3.1.3/bin
-  - SPEC CACHE DIRECTORY: /Users/<username>/.local/share/gem/specs
-  - SYSTEM CONFIGURATION DIRECTORY: /Users/<username>/.rubies/ruby-3.1.3/etc
-# ...
+  RubyGems Environment:
+  - RUBYGEMS VERSION: 3.6.9
+  - RUBY VERSION: 3.4.7 (2025-10-08 patchlevel 58) [arm64-darwin24]
+  - INSTALLATION DIRECTORY: /Users/<username>/.gem/ruby/3.4.7
+  - USER INSTALLATION DIRECTORY: /Users/<username>/.local/share/gem/ruby/3.4.0
+  - CREDENTIALS FILE: /Users/<username>/.local/share/gem/credentials
+  - RUBY EXECUTABLE: /Users/<username>/.rubies/ruby-3.4.7/bin/ruby
+  - GIT EXECUTABLE: /usr/bin/git
+  - EXECUTABLE DIRECTORY: /Users/<username>/.gem/ruby/3.4.7/bin
+  - SPEC CACHE DIRECTORY: /Users/<username>/.cache/gem/specs
+  - SYSTEM CONFIGURATION DIRECTORY: /Users/<username>/.rubies/ruby-3.4.7/etc
+  - RUBYGEMS PLATFORMS:
+     - ruby
+     - arm64-darwin-24
+  - GEM PATHS:
+     - /Users/<username>/.gem/ruby/3.4.7
+     - /Users/<username>/.rubies/ruby-3.4.7/lib/ruby/gems/3.4.0
+  - GEM CONFIGURATION:
+     - :update_sources => true
+     - :verbose => true
+     - :backtrace => true
+     - :bulk_threshold => 1000
+  - REMOTE SOURCES:
+     - https://rubygems.org/
+  - SHELL PATH:
+     - /Users/<username>/.gem/ruby/3.4.7/bin
+     - /Users/<username>/.rubies/ruby-3.4.7/lib/ruby/gems/3.4.0/bin
+     - /Users/<username>/.rubies/ruby-3.4.7/bin
+     # ...
 ```
 
-**NOTE**: a previous step could have been to configure a location where the gems can be
-installed for our project, in isolation from the rest of the other projects we might have,
-but I won't be covering it in this article.
+## Summary
+
+- Install Ruby using `chruby` + `ruby-install` + Bundler
+- This solution provides everything I need
+- Simple installation and usability
+- `ruby-install` handles installing Ruby versions
+- `chruby` handles switching Ruby versions (also automatically via `.ruby-version` files)
+- Bundler handles gem dependencies management via `Gemfile` and `Gemfile.lock`
+  - Gem isolation per Ruby version
+  - Gem isolation per project at runtime: applications only load gems specified in the
+    `Gemfile.lock` file
+
+***2015-11-29 - Update:***
+
+- All the sections are now up to date
+- Ruby versions updated
+- Expanded the section about installing Ruby gems
+- Added a summary
