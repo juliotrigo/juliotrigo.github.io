@@ -202,10 +202,10 @@ version (e.g., `3.4.7`). Each Ruby installation has its own separate gem directo
 
 **Notes**:
 - By default, all projects using the same Ruby version share the same gem installation directory
-- Bundler doesn't provide filesystem isolation for gems by default
+- Multiple versions of the same gem can coexist in the gem installation directory
+- Bundler doesn't provide filesystem isolation for gems by default (see [next section](#isolate-gems-per-project))
 - Bundler isolates gems at runtime by manipulating the load path (`$LOAD_PATH`) to include only
   the gems specified in the project's `Gemfile.lock`
-- Multiple versions of the same gem can coexist in the gem installation directory
 
 ### Isolate gems per project
 
