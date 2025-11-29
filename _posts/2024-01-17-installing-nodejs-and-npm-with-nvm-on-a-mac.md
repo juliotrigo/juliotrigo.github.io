@@ -3,8 +3,8 @@ layout: post
 title: "Installing Node.js and npm on a Mac"
 author: Julio Trigo
 date: 2024-01-27 12:15:00 +0100
-modified_date: 2025-11-29 16:45:00 +0100
-last_modified_at: 2025-11-29 16:45:00 +0100
+modified_date: 2025-11-29 22:45:00 +0100
+last_modified_at: 2025-11-29 22:45:00 +0100
 permalink: /articles/installing-nodejs-and-npm-on-a-mac/
 tags:
   - Node.js
@@ -17,8 +17,8 @@ tags:
 
 ---
 
-Recently, I had to install Node.js and npm on a Mac and I decided to document the steps I took,
-which could be useful if we have to do this again from scratch.
+Recently, I installed Node.js and npm on my Mac and thought of documenting the steps I followed
+for future reference, which will be helpful the next time I have to do it.
 
 <!--more-->
 
@@ -65,7 +65,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-**NOTE**: it assumes we’re using `zsh`.
+**Note**: it assumes we’re using `zsh`.
 
 * Verify installation:
 
@@ -94,8 +94,11 @@ Computing checksum with shasum -a 256
 Checksums matched!
 Now using node v16.13.0 (npm v8.1.0)
 Creating default alias: default -> 16.13.0 (-> v16.13.0)
+```
 
-# Install the latest LTS version
+Alternatively, we can install the latest LTS version directly:
+
+```shell
 $ nvm install --lts
 ```
 
@@ -155,9 +158,9 @@ $ nvm use default
 ## .nvmrc
 
 As explained in the [nvm documentation](https://github.com/nvm-sh/nvm#nvmrc), we can create a
-`.nvmrc` file containing a Node.js version number in the project directory (or any parent
-directory). Afterwards, `nvm` commands will automatically use the version specified in the `.nvmrc` 
-file if no version of Node.js is supplied.
+`.nvmrc` file containing a Node.js version number in the project directory (or any parent
+directory). Afterwards, commands like `nvm use`, `nvm install`, or `nvm exec` will use the version
+specified in the `.nvmrc` file when no version is explicitly provided.
 
 ```shell
 $ cd /full/path/to/my_project
@@ -175,7 +178,9 @@ Now using node v17.8.0 (npm v8.5.5)
 Since we’ve just cloned the `nvm` repository, we can just fetch and check out the latest release in
 order to upgrade it. See the [Manual Upgrade](https://github.com/nvm-sh/nvm#manual-upgrade) notes.
 
-***2015-11-29 - Update:***
+***2025-11-29 - Update:***
 
 - Add a note about how to install the latest LTS version
 - How to use the `default` Node.js version
+- Clarified ambiguity with `.nvmrc`
+- Improvements and fixes
