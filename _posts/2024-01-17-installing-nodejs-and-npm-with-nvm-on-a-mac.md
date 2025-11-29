@@ -3,7 +3,8 @@ layout: post
 title: "Installing Node.js and npm on a Mac"
 author: Julio Trigo
 date: 2024-01-27 12:15:00 +0100
-last_modified_at: 2024-01-27 12:15:00 +0100
+modified_date: 2025-11-29 16:45:00 +0100
+last_modified_at: 2025-11-29 16:45:00 +0100
 permalink: /articles/installing-nodejs-and-npm-on-a-mac/
 tags:
   - Node.js
@@ -93,6 +94,9 @@ Computing checksum with shasum -a 256
 Checksums matched!
 Now using node v16.13.0 (npm v8.1.0)
 Creating default alias: default -> 16.13.0 (-> v16.13.0)
+
+# Install the latest LTS version
+$ nvm install --lts
 ```
 
 ### Verify versions
@@ -143,6 +147,9 @@ If we had multiple versions of Node.js installed then we could switch between th
 ```shell
 $ nvm use 16.13.0
 Now using node v16.13.0 (npm v8.1.0)
+
+# Use the Node.js version set as `default`
+$ nvm use default
 ```
 
 ## .nvmrc
@@ -154,8 +161,10 @@ file if no version of Node.js is supplied.
 
 ```shell
 $ cd /full/path/to/my_project
+
 $ cat .nvmrc
 17.8.0
+
 $ nvm use
 Found '/full/path/to/my_project/.nvmrc' with version <17.8.0>
 Now using node v17.8.0 (npm v8.5.5)
@@ -165,3 +174,8 @@ Now using node v17.8.0 (npm v8.5.5)
 
 Since we’ve just cloned the `nvm` repository, we can just fetch and check out the latest release in
 order to upgrade it. See the [Manual Upgrade](https://github.com/nvm-sh/nvm#manual-upgrade) notes.
+
+***2015-11-29 - Update:***
+
+- Add a note about how to install the latest LTS version
+- How to use the `default` Node.js version
