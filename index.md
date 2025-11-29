@@ -17,6 +17,8 @@ I currently work at <a href="https://www.sohonet.com/">Sohonet <img src="/assets
 an [Engineering Emmy® Award](https://www.emmys.com/news/awards-news/engineering-201008)
 on the [72nd Engineering Emmy Awards](https://youtu.be/M2mnOZJEr84?t=1299) in 2020 (Sohonet’s [acceptance speech](https://vimeo.com/473410773) and [article](https://www.sohonet.com/article/clearview-flex-wins-advancing-remote-collaboration-engineering-emmy-r))
 and a [Lumiere Award](https://www.sohonet.com/article/sohonet-honoured-with-lumiere-award-from-the-advanced-imaging-society-for-clearview-flex) from [The Advanced Imaging Society](https://theadvancedimagingsociety.com/) on the [11th Annual Entertainment Technology Lumiere Awards](https://www.youtube.com/watch?v=SynlNkvuz4o&t=1755s) in 2021.
+It has also received an Honorable Mention in the Engineering Excellence category at the
+[2020 HPA Awards](https://hpaonline.com/nominees-and-winners/2020-hpa-awards/).
 
 Here you can find the <a href="{% link articles.md %}">articles 🖋</a> that I have published.
 
