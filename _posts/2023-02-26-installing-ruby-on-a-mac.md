@@ -19,6 +19,10 @@ tags:
 There are already quite a few guides and articles that explain how to install Ruby so I don't intend to create another one.
 What I'm going to do is to document the steps I took to install Ruby on my Mac and summarise how I made it work.
 
+<!--more-->
+
+## Bibliography
+
 This is a fantastic article about [the fastest and easiest way to install Ruby on a Mac](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/), linked from the [Jekyll on macOS](https://jekyllrb.com/docs/installation/macos/) installation page.
 
 This is another article that explains the benefits of using `chruby`: [why I use chruby instead of RVM or rbenv](https://stevemarshall.com/journal/why-i-use-chruby/).
@@ -26,8 +30,6 @@ This is another article that explains the benefits of using `chruby`: [why I use
 The [Why You Should Never Use sudo to Install Ruby Gems](https://www.moncefbelyamani.com/why-you-should-never-use-sudo-to-install-ruby-gems/) article is also worth reading.
 
 And an article about configuring Bundler to [install gems in the project directory](https://guilhermesimoes.github.io/blog/installing-gems-per-project-directory).
-
-<!--more-->
 
 ## Install chruby and ruby-install
 
