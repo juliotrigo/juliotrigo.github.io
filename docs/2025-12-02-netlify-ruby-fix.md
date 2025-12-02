@@ -17,7 +17,24 @@ Netlify deployment times out during the Ruby installation step:
 
 ## Solution
 
-Downgrade to Ruby 3.3.6, which is pre-installed on Netlify Noble.
+Downgrade to Ruby 3.3.6, which is the default Ruby version on Netlify Noble.
+
+**Important**: Ruby 3.3.6 still needs to be compiled by mise on the first build, but it completes within the timeout (~4 minutes). Subsequent builds use the cached installation.
+
+### Netlify Cache Issue
+
+The first deployment attempt with Ruby 3.3.6 also timed out. The stale build cache (from previous Ruby 3.4.7 attempts) was causing mise to get stuck during Ruby installation.
+
+**Fix**: Cancel the deployment and rerun it without cache ("Clear cache and deploy site" in Netlify).
+
+After clearing the cache, the build completed successfully:
+
+| Step | Time |
+|------|------|
+| `./configure` | ~27 seconds |
+| `make -j 32` | ~2 min 44 sec |
+| `make install` | ~37 seconds |
+| **Total Ruby compilation** | **~3 min 48 sec** |
 
 ### Gem Compatibility Verification
 
