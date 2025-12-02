@@ -21,9 +21,9 @@ The source code of this website is available on <a href='https://github.com/juli
 
 The <a href='https://www.latofonts.com/lato-free-fonts/'>Lato</a> font family, used on this site, is avail­able under the <a href='https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL'>SIL Open Font License 1.1</a>.
 
-The <a href='https://design.ubuntu.com/font/'>Ubuntu</a> font family, used on this site, is avail­able under the <a href='https://ubuntu.com/legal/font-licence'>Ubuntu font licence</a>.
+The <a href='https://fonts.google.com/specimen/IBM+Plex+Mono'>IBM Plex Mono</a> font family, used on this site, is avail­able under the <a href='https://openfontlicense.org/'>Open Font License</a>.
 
-The <a href='https://fonts.google.com/specimen/Indie+Flower'>Indie Flower</a> font family, used on this site, is avail­able under the <a href='https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web'>Open Font License</a>.
+The <a href='https://fonts.google.com/specimen/Indie+Flower'>Indie Flower</a> font family, used on this site, is avail­able under the <a href='https://openfontlicense.org/'>Open Font License</a>.
 
 <a href='https://github.com/tyre/base16-eighties-dark'>Base16 Eighties Dark Theme</a> colors,
 arranged with the <a href='https://github.com/idleberg/base16-pygments'>Base16 Eighties Dark template</a>,
