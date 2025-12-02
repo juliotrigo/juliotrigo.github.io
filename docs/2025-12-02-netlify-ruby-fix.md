@@ -1,6 +1,6 @@
 # Netlify Ruby Version Fix
 
-This document describes the fix for the Netlify deployment timeout caused by Ruby 3.4.7.
+This document describes the fix for the Netlify deployment timeout caused by a stale build cache.
 
 ## Problem
 
@@ -13,21 +13,19 @@ Netlify deployment times out during the Ruby installation step:
 8:34:01 AM: Execution timed out after 17m59.74787331s
 ```
 
-**Root cause**: Netlify's Noble build image (Ubuntu 24.04) doesn't have a pre-built binary for Ruby 3.4.7. When this happens, `mise` falls back to compiling Ruby from source, which exceeds Netlify's 18-minute timeout.
+**Initial assumption**: Netlify's Noble build image (Ubuntu 24.04) doesn't have a pre-built binary for Ruby 3.4.7, so `mise` falls back to compiling Ruby from source, exceeding Netlify's 18-minute timeout.
+
+**Actual root cause**: A stale build cache was causing mise to attempt recompilation even for pre-installed Ruby versions.
 
 ## Solution
 
-Downgrade to Ruby 3.3.6, which is the default Ruby version on Netlify Noble.
-
-**Important**: Ruby 3.3.6 still needs to be compiled by mise on the first build, but it completes within the timeout (~4 minutes). Subsequent builds use the cached installation.
-
-### Netlify Cache Issue
-
-The first deployment attempt with Ruby 3.3.6 also timed out. The stale build cache (from previous Ruby 3.4.7 attempts) was causing mise to get stuck during Ruby installation.
+Clear the Netlify build cache and redeploy.
 
 **Fix**: Cancel the deployment and rerun it without cache ("Clear cache and deploy site" in Netlify).
 
-After clearing the cache, the build completed successfully:
+### What We Discovered
+
+We initially downgraded to Ruby 3.3.6, but the first deployment still timed out due to the stale cache. After clearing the cache, Ruby 3.3.6 compiled successfully in ~4 minutes:
 
 | Step | Time |
 |------|------|
@@ -36,26 +34,47 @@ After clearing the cache, the build completed successfully:
 | `make install` | ~37 seconds |
 | **Total Ruby compilation** | **~3 min 48 sec** |
 
+We then tested Ruby 3.4.7 again with a clean cache, and it worked immediately - **no compilation needed**:
+
+```
+8:41:34 PM: Attempting Ruby version 3.4.7, read from .ruby-version file
+8:41:34 PM: Ruby version set to 3.4.7
+```
+
+### Conclusion
+
+| Ruby Version | Pre-installed on Netlify Noble? |
+|--------------|--------------------------------|
+| 3.4.7 | Yes - instantly available |
+| 3.3.6 | No - requires ~4 min compilation |
+
+The stale cache was the culprit, causing mise to incorrectly attempt source compilation for 3.4.7. Ironically, the newer Ruby version (3.4.7) is the one that's pre-installed.
+
 ### Gem Compatibility Verification
 
-| Gem | Compatibility with Ruby 3.3.6 |
+| Gem | Compatibility with Ruby 3.4.7 |
 |-----|-------------------------------|
 | Jekyll 4.4.1 | Yes (requires Ruby >= 2.7.0) |
 | sass-embedded 1.94.2 | Yes (has pre-built binaries) |
 | google-protobuf 4.33.1 | Yes (has pre-built binaries) |
 | All other gems | Yes |
 
-## Steps
+## Steps (if you encounter this issue)
 
-### Step 1: Update `.ruby-version`
+### Step 1: Clear Netlify Build Cache
 
-Change from `3.4.7` to `3.3.6`.
+Cancel the deployment and rerun it without cache ("Clear cache and deploy site" in Netlify).
 
-### Step 2: Delete `Gemfile.lock`
+### Step 2: If changing Ruby version locally
 
-Force fresh dependency resolution for the new Ruby version.
+If you need to change the Ruby version in `.ruby-version`, also delete `Gemfile.lock` and regenerate it:
 
-### Step 3: Install Ruby 3.3.6 (Apple Silicon Macs)
+```bash
+chruby <version>
+bundle install
+```
+
+### Note: Installing Ruby 3.3.x on Apple Silicon Macs
 
 On Apple Silicon Macs with newer Clang versions (17.x), compiling Ruby 3.3.x fails with:
 
@@ -71,14 +90,7 @@ On Apple Silicon Macs with newer Clang versions (17.x), compiling Ruby 3.3.x fai
 ruby-install 3.3.6 -- rb_cv_function_name_string=__func__
 ```
 
-### Step 4: Install Dependencies
-
-```bash
-chruby 3.3.6
-bundle install
-```
-
-### Step 5: Local Testing
+### Step 3: Local Testing
 
 ```bash
 bundle exec jekyll serve

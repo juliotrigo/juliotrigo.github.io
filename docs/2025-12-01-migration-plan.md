@@ -214,6 +214,17 @@ Sass `@import` is deprecated in favor of `@use`/`@forward` (will be removed in D
 
 `lighten()` and `darken()` are deprecated in favor of `color.adjust()`. These warnings come from **Minima's gem files**, not local code.
 
+### Ruby 3.5 Logger Warning
+
+With Ruby 3.4.7, Jekyll produces this warning:
+
+```
+logger was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add logger to your Gemfile or gemspec to silence this warning.
+```
+
+This is informational only - `logger` will need to be added as an explicit dependency when Ruby 3.5 is released. No action needed now.
+
 ### Decision
 
 **Leave as-is.** These are warnings only - the site builds and works correctly. Dart Sass 3.0 is not yet released. Fixing would require either:
