@@ -3,8 +3,8 @@ layout: post
 title: "Installing Ruby on a Mac"
 author: Julio Trigo
 date: 2023-02-28 20:45:00 +0100
-modified_date: 2025-11-29 16:45:00 +0100
-last_modified_at: 2025-11-29 16:45:00 +0100
+modified_date: 2025-12-02 20:30:00 +0100
+last_modified_at: 2025-12-02 20:30:00 +0100
 permalink: /articles/installing-ruby-on-a-mac/
 tags:
   - Ruby
@@ -37,7 +37,7 @@ And an article about configuring Bundler to [install gems in the project directo
 
 ## Install chruby and ruby-install
 
-I’m going to use [chruby](https://github.com/postmodern/chruby) as a Ruby version manager and [ruby-install](https://github.com/postmodern/ruby-install) as a tool to install Ruby.
+I’m going to use [`chruby`](https://github.com/postmodern/chruby) as a Ruby version manager and [`ruby-install`](https://github.com/postmodern/ruby-install) as a tool to install Ruby.
 
 They can both be installed using [Homebrew](https://brew.sh/).
 
@@ -75,14 +75,50 @@ $ ruby-install 3.4.5
 >>> Installing ruby 3.4.5 ...
 installing bundled gems:            /Users/<username>/.rubies/ruby-3.4.5/lib/ruby/gems/3.4.0
 >>> Successfully installed ruby 3.4.5 into /Users/<username>/.rubies/ruby-3.4.5
+
+$ ruby-install 3.3.6
+>>> Installing ruby 3.3.6 into /Users/<username>/.rubies/ruby-3.3.6 ...
+>>> Installing dependencies for ruby 3.3.6 ...
+>>> Downloading https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.xz into /Users/<username>/src ...
+>>> Verifying ruby-3.3.6.tar.xz ...
+>>> Extracting ruby-3.3.6.tar.xz to /Users/<username>/src/ruby-3.3.6 ...
+>>> Configuring ruby 3.3.6 ...
+>>> Cleaning ruby 3.3.6 ...
+>>> Compiling ruby 3.3.6 ...
+>>> Installing ruby 3.3.6 ...
+installing bundled gems:            /Users/<username>/.rubies/ruby-3.3.6/lib/ruby/gems/3.3.0
+>>> Successfully installed ruby 3.3.6 into /Users/<username>/.rubies/ruby-3.3.6
 ```
 
 Ruby versions are installed in the `~/.rubies/` folder by default:
 
 ```shell
 $ ls ~/.rubies
-ruby-3.4.5 ruby-3.4.7
+ruby-3.3.6 ruby-3.4.5 ruby-3.4.7
 ```
+
+Note that the installation output shows gems being installed in paths like
+`~/.rubies/ruby-3.4.7/lib/ruby/gems/3.4.0/` — these are gems bundled with Ruby
+that ship with the installation. See [Installation location](#installation-location)
+for details on how gem paths work.
+
+### Compiling older Ruby versions
+
+On some macOS systems, compiling Ruby `3.3.x` may fail with:
+
+```
+error: use of undeclared identifier 'RUBY_FUNCTION_NAME_STRING'
+```
+
+This happens when Ruby's autoconf script fails to detect `__func__` support.
+To fix this, pass the variable explicitly:
+
+```shell
+$ ruby-install 3.3.6 -- rb_cv_function_name_string=__func__
+```
+
+See [this article](https://dev.to/franklinyu/error-of-rubyfunctionnamestring-when-compiling-ruby-32b8)
+for more details.
 
 ## Configure chruby in the shell
 
@@ -104,7 +140,7 @@ $ echo "chruby ruby-3.4.7" >> ~/.zshrc
 ## Reload the shell
 
 ```shell
-source ~/.zshrc
+$ source ~/.zshrc
 ```
 
 ## Check the installation
@@ -125,6 +161,7 @@ At this point, we already have Ruby `3.4.7` installed and activated!
 
 ```shell
 $ chruby
+   ruby-3.3.6
    ruby-3.4.5
  * ruby-3.4.7
 ```
@@ -134,6 +171,10 @@ $ chruby
 ```shell
 $ ruby -v
 ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +PRISM [arm64-darwin24]
+
+$ chruby 3.3.6
+$ ruby -v
+ruby 3.3.6 (2024-11-05 revision 75015d4c1f) [arm64-darwin24]
 
 $ chruby 3.4.5
 $ ruby -v
@@ -192,20 +233,57 @@ Bundler is the standard tool in Ruby for managing project dependencies.
 
 ### Installation location
 
-With `chruby`, gems are installed in `~/.gem/ruby/<version>` where `<version>` is the full Ruby
-version (e.g., `3.4.7`). Each Ruby installation has its own separate gem directory.
+Gems could end up in different locations depending on how they are installed:
 
-`bundle install` installs gems in the same location as `gem install`, unless:
-- A custom Bundler path has been configured (see [next section](#isolate-gems-per-project))
-- The `BUNDLE_PATH` environment variable is set
-- The `--deployment` flag is used (which defaults to `vendor/bundle`)
+#### 1. Gems bundled with Ruby
 
-**Notes**:
-- By default, all projects using the same Ruby version share the same gem installation directory
-- Multiple versions of the same gem can coexist in the gem installation directory
-- Bundler doesn't provide filesystem isolation for gems by default (see [next section](#isolate-gems-per-project))
-- Bundler isolates gems at runtime by manipulating the load path (`$LOAD_PATH`) to include only
-  the gems specified in the project's `Gemfile.lock`
+- Location: `~/.rubies/ruby-<version>/lib/ruby/gems/<major>.<minor>.0/`
+- Example: `~/.rubies/ruby-3.4.7/lib/ruby/gems/3.4.0/`
+
+These are gems that ship with Ruby itself (like `bundler`, `irb`, `rake`, etc.) and are installed
+when running `ruby-install`. The path uses the minor version format (`3.4.0`) so native extensions
+stay compatible across patch releases (3.4.5, 3.4.6, 3.4.7, etc.).
+
+#### 2. Gems installed via `gem install`
+
+- Location: `~/.gem/ruby/<full-version>/`
+- Example: `~/.gem/ruby/3.4.7/`
+
+When `chruby` is active, it sets `GEM_HOME` to this path using the full Ruby version.
+Each Ruby installation (full version) has its own separate gem directory.
+
+```shell
+$ echo $GEM_HOME
+/Users/<username>/.gem/ruby/3.4.7
+```
+
+#### 3. Gems installed via `bundle install` (without `BUNDLE_PATH`)
+
+- Location: Same as `gem install` → `~/.gem/ruby/<full-version>/`
+
+When Bundler has no custom path configured, it installs gems to the same location as `gem install`.
+This means gems are shared across all projects using the same Ruby version.
+
+Bundler doesn't provide filesystem isolation for gems by default (see
+[Isolate gems per project](#isolate-gems-per-project)). Multiple versions of the same gem can
+coexist in the gem installation directory. Instead, Bundler isolates gems at runtime by manipulating
+the load path (`$LOAD_PATH`) to include only the gems specified in the project's `Gemfile.lock`.
+
+#### 4. Gems installed via `bundle install` (with `BUNDLE_PATH`)
+
+- Location: `<configured-path>/ruby/<major>.<minor>.0/`
+- Example: `vendor/bundle/ruby/3.4.0/`
+
+When `BUNDLE_PATH` is configured, Bundler installs gems in that path. `BUNDLE_PATH` can be set via:
+
+- The `BUNDLE_PATH` environment variable
+- The `.bundle/config` file
+- The `--deployment` flag (which defaults to `vendor/bundle`)
+
+It uses the minor version format (`3.4.0`) so upgrading from Ruby 3.4.5 to 3.4.7 doesn't
+require reinstalling gems.
+
+See [Isolate gems per project](#isolate-gems-per-project) for how to configure this.
 
 ### Isolate gems per project
 
@@ -214,14 +292,15 @@ We could also choose to use filesystem isolation per project by installing gems 
 
 ```shell
 # Add the Bundle path to the Bundle config
-bundle config set --local path 'vendor/bundle'
+$ bundle config set --local path 'vendor/bundle'
 
 # Install the gems in the Bundle path specified in the Bundle config
-bundle install
-
-# Add these files to .gitignore
-echo "vendor/bundle/" >> .gitignore
-echo ".bundle/" >> .gitignore
+$ bundle install
+Fetching gem metadata from https://rubygems.org/...........
+Resolving dependencies...
+# ...
+Bundle complete! 7 Gemfile dependencies, 40 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
 ```
 
 The `bundle config` command above creates a `.bundle/config` file that remembers this setting:
@@ -232,6 +311,13 @@ BUNDLE_PATH: "vendor/bundle"
 ```
 
 Subsequent bundle install commands will install gems in the `vendor/bundle` folder.
+
+Remember to add these files to `.gitignore`:
+
+```shell
+$ echo "vendor/bundle/" >> .gitignore
+$ echo ".bundle/" >> .gitignore
+```
 
 ## Check the gem environment
 
@@ -270,8 +356,7 @@ RubyGems Environment:
 
 ## Summary
 
-- Install Ruby using `chruby` + `ruby-install` + Bundler
-- This solution provides everything I need
+- Manage Ruby versions using `chruby` + `ruby-install` + Bundler
 - Simple installation and usability
 - `ruby-install` handles installing Ruby versions
 - `chruby` handles switching Ruby versions (also automatically via `.ruby-version` files)
@@ -286,3 +371,11 @@ RubyGems Environment:
 - Ruby versions updated
 - Expanded the section about installing Ruby gems
 - Added a summary
+
+***2025-12-02 - Update:***
+
+- Restructured the [Installation location](#installation-location) section with detailed subsections
+- Clarified where gems are installed and why different paths use different version formats
+- Added `$GEM_HOME` example
+- Added note about Ruby `3.3.x` compilation issue on some macOS systems
+- Fixed various consistency issues
