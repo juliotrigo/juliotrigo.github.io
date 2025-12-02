@@ -118,8 +118,6 @@ GEM
       google-protobuf (~> 4.31)
     sass-embedded (1.94.2-aarch64-linux-musl)
       google-protobuf (~> 4.31)
-    sass-embedded (1.94.2-aarch64-mingw-ucrt)
-      google-protobuf (~> 4.31)
     sass-embedded (1.94.2-arm-linux-androideabi)
       google-protobuf (~> 4.31)
     sass-embedded (1.94.2-arm-linux-gnueabihf)
@@ -151,7 +149,6 @@ PLATFORMS
   aarch64-linux-android
   aarch64-linux-gnu
   aarch64-linux-musl
-  aarch64-mingw-ucrt
   arm-linux-androideabi
   arm-linux-gnu
   arm-linux-gnueabihf
@@ -178,7 +175,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.3.6p108
+   ruby 3.4.7p58
 
 BUNDLED WITH
-   2.5.22
+   2.6.9
