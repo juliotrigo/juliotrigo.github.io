@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby File.read(".ruby-version").strip
 
+gem "logger"
 gem "jekyll", "~> 4.4"
 gem "minima", "~> 2.5"
 
