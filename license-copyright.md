@@ -1,7 +1,7 @@
 ---
 layout: page
 title: License & copyright
-last_modified_at: 2025-11-29 16:45:00 +0100
+last_modified_at: 2025-12-07 14:30:00 +0100
 permalink: /license-copyright/
 ---
 
@@ -25,8 +25,9 @@ The <a href='https://fonts.google.com/specimen/IBM+Plex+Mono'>IBM Plex Mono</a> 
 
 The <a href='https://fonts.google.com/specimen/Indie+Flower'>Indie Flower</a> font family, used on this site, is avail­able under the <a href='https://openfontlicense.org/'>Open Font License</a>.
 
-<a href='https://github.com/tyre/base16-eighties-dark'>Base16 Eighties Dark Theme</a> colors,
-arranged with the <a href='https://github.com/idleberg/base16-pygments'>Base16 Eighties Dark template</a>,
+<a href='https://github.com/Binaryify/OneDark-Pro'>One Dark Pro</a> colors,
+arranged with the <a href='https://github.com/idleberg/base16-pygments'>Base16 Pygments template</a>,
 have been used for code highlighting.
+One Dark Pro is available under the <a href='https://opensource.org/licenses/MIT'>MIT License</a>.
 
 The "home" and "rss feed" <a href='https://material.io/resources/icons/'>icons</a> by <a href='https://material.io'>Material Design</a> are available under the <a href='https://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0.
