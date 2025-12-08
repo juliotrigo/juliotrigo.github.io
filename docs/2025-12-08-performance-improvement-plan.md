@@ -9,7 +9,7 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 | 1 | Fix render-blocking Google Fonts | ✅ Completed (2025-12-08) |
 | 2 | Optimize Google Analytics loading | ✅ Completed (2025-12-08) |
 | 3 | Add explicit dimensions to images | ⏳ Pending |
-| 4 | Fix `<html lang>` attribute | ⏳ Pending |
+| 4 | Fix `<html lang>` attribute | ✅ Completed (2025-12-08) |
 | 5 | Enable CSS minification | ⏳ Pending |
 | 6 | Optimize images (optional) | ⏳ Pending |
 
@@ -199,6 +199,10 @@ The code checks if the user has enabled "Do Not Track" in their browser settings
 
 **Problem:** The `lang` value uses underscore (`en_GB`) but HTML spec requires hyphen (`en-GB`).
 
+**Background:** The underscore format (`en_GB`) is the Unix locale format. The HTML spec uses the hyphen format (`en-GB`) based on BCP 47 language tags. The original value was added in May 2020.
+
+**Impact:** Minimal. This is primarily an accessibility/validation fix. Screen readers use the `lang` attribute to select correct pronunciation, and the hyphen format is the standard they expect.
+
 **Changes:**
 
 ```yaml
@@ -208,6 +212,10 @@ lang: en_GB
 # After
 lang: en-GB
 ```
+
+**Testing (2025-12-08):**
+
+1. Verified local server output: `<html lang="en-GB">` - ✅ Correct
 
 ---
 
