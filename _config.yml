@@ -77,6 +77,8 @@ google_font:
 # Build settings
 markdown: kramdown
 theme: minima
+sass:
+  style: compressed
 plugins:
   - jekyll-feed
   - jekyll-redirect-from

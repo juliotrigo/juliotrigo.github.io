@@ -10,7 +10,7 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 | 2 | Optimize Google Analytics loading | ✅ Completed (2025-12-08) |
 | 3 | Add explicit dimensions to images | ⏳ Pending |
 | 4 | Fix `<html lang>` attribute | ✅ Completed (2025-12-08) |
-| 5 | Enable CSS minification | ⏳ Pending |
+| 5 | Enable CSS minification | ✅ Completed (2025-12-08) |
 | 6 | Optimize images (optional) | ⏳ Pending |
 
 ---
@@ -225,6 +225,8 @@ lang: en-GB
 
 **Problem:** SASS outputs expanded CSS (17KB). Minification can reduce this by ~40-50%.
 
+**What this does:** The `style: compressed` setting tells Jekyll's SASS compiler to minify the CSS output, removing all whitespace and newlines. The CSS works exactly the same, just smaller.
+
 **Changes:**
 
 ```yaml
@@ -237,6 +239,13 @@ sass:
   quiet_deps: true
   style: compressed
 ```
+
+**Testing (2025-12-08):**
+
+1. Measured CSS size before: 17,910 bytes
+2. Built site with `bundle exec jekyll build`
+3. Measured CSS size after: 11,781 bytes
+4. **Result:** 34% reduction (~6 KB saved) ✅
 
 ---
 
