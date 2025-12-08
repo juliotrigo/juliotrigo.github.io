@@ -12,6 +12,7 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 | 4 | Fix `<html lang>` attribute | ✅ Completed (2025-12-08) |
 | 5 | Enable CSS minification | ✅ Completed (2025-12-08) |
 | 6 | Optimize images (optional) | ⏳ Pending |
+| 7 | Preload Lato font to reduce critical chain | ⏳ Pending |
 
 ---
 
@@ -267,9 +268,38 @@ sass:
 
 ---
 
+### 7. Preload Lato Font to Reduce Critical Chain
+
+**File:** `_includes/head.html`
+
+**Problem:** PageSpeed flags a critical request chain with 1,328ms latency:
+
+```
+1. HTML page (519ms)
+   └── 2. main.css (983ms) - CSS must wait for HTML
+       └── 3. LatoLatin-Regular.woff2 (1,328ms) - Font must wait for CSS
+```
+
+The browser doesn't know about the Lato font until it parses the CSS `@font-face` declaration, creating a waterfall delay.
+
+**Solution:** Add a `<link rel="preload">` for the Lato font. This tells the browser to start downloading the font immediately, in parallel with CSS parsing.
+
+**Changes:**
+
+```html
+<!-- Add to head.html, before the main.css link -->
+<link rel="preload" href="/assets/fonts/LatoLatin-Regular.woff2" as="font" type="font/woff2" crossorigin>
+```
+
+**Why `crossorigin`:** Required for fonts even when self-hosted, due to how browsers handle font requests.
+
+**Trade-off:** If a page doesn't use Lato, bandwidth is wasted. Since Lato is the main body font used on every page, this is not a concern.
+
+---
+
 ## Files to Modify
 
-1. `_includes/head.html` - Preload Google Fonts
+1. `_includes/head.html` - Preload Google Fonts, preload Lato font
 2. `_includes/google-analytics.html` - Create/override with async loading
 3. `_includes/footer.html` - Add image dimensions
 4. `index.md` - Add image dimensions to Sohonet logo
