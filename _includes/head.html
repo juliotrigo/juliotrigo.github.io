@@ -31,9 +31,12 @@
   <link rel="shortcut icon" href="/logo32.png" type="image/png" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   {% if site.google_font %}
     {% for link in site.google_font %}
-      <link rel="stylesheet" href="{{ link.url }}" type="text/css" />
+      <link rel="preload" href="{{ link.url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="{{ link.url }}" type="text/css"></noscript>
     {% endfor %}
   {% endif %}
 
