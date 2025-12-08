@@ -7,7 +7,7 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 | Step | Description | Status |
 |------|-------------|--------|
 | 1 | Fix render-blocking Google Fonts | ✅ Completed (2025-12-08) |
-| 2 | Optimize Google Analytics loading | ⏳ Pending |
+| 2 | Optimize Google Analytics loading | ✅ Completed (2025-12-08) |
 | 3 | Add explicit dimensions to images | ⏳ Pending |
 | 4 | Fix `<html lang>` attribute | ⏳ Pending |
 | 5 | Enable CSS minification | ⏳ Pending |
@@ -93,26 +93,61 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 
 ### 2. Optimize Google Analytics Loading
 
-**File:** Create `_includes/google-analytics.html` (override Minima's default)
+**Files:**
+- Create `_includes/google-analytics.html` (override Minima's default)
+- Update `_config.yml` (change analytics ID)
 
-**Problem:** Google Analytics (gtag.js) loads synchronously, contributing 54 KiB of unused JavaScript on initial load.
+**Problem:**
+- Google Analytics (gtag.js) contributes 54 KiB of unused JavaScript on initial load
+- Minima's default template uses the deprecated Universal Analytics (`analytics.js`)
+- The config used an old Universal Analytics ID (`UA-104164449-1`) which was sunset by Google on July 1, 2023
 
-**Solution:** Ensure the script loads with `async` attribute and consider deferring until after page load.
+**Solution:**
+- Migrate to Google Analytics 4 (GA4) using the modern `gtag.js` library
+- Use the `async` attribute for non-blocking script loading
+- Preserve Do Not Track (DNT) privacy check from Minima
 
-**Changes:**
+**Code source:** The gtag.js snippet is from [Google's official documentation](https://developers.google.com/tag-platform/gtagjs), adapted with Jekyll templating and Minima's privacy wrapper.
+
+**Changes to `_includes/google-analytics.html`:**
 
 ```html
-<!-- Async loading of gtag.js -->
+<!-- Google Analytics 4 (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
+if (!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', '{{ site.google_analytics }}');
+}
 </script>
 ```
 
-**Note:** The current `google_analytics` value (`UA-104164449-1`) is a Universal Analytics ID (deprecated). The PageSpeed results show `G-EPMRDFVSSX` being loaded, which is a GA4 ID. Verify which analytics setup is active and consider consolidating.
+**Changes to `_config.yml`:**
+
+```yaml
+# Before
+google_analytics: UA-104164449-1
+
+# After
+google_analytics: G-EPMRDFVSSX
+```
+
+**Do Not Track (DNT) privacy feature:**
+
+The code checks if the user has enabled "Do Not Track" in their browser settings. If DNT is enabled, the analytics code doesn't run, respecting the user's privacy preference. This was present in Minima's original template and is preserved here as good privacy practice.
+
+**Testing (2025-12-08):**
+
+1. Verified `_includes/google-analytics.html` created with GA4 code - ✅ Correct
+2. Verified `_config.yml` updated with GA4 ID (`G-EPMRDFVSSX`) - ✅ Correct
+3. Built with `JEKYLL_ENV=production` and checked `_site/index.html` - ✅ Contains:
+   - `async` attribute on script tag
+   - Correct GA4 measurement ID
+   - Do Not Track privacy check wrapper
+
+**Note:** Analytics script only appears in production builds (controlled by `{% if jekyll.environment == 'production' %}` in `head.html`).
 
 ---
 
