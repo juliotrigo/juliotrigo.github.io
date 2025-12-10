@@ -268,38 +268,59 @@ sass:
 
 ---
 
-### 7. Preload Lato Font to Reduce Critical Chain
+### 7. Preload Lato Fonts to Reduce Critical Chain
 
 **File:** `_includes/head.html`
 
-**Problem:** PageSpeed flags a critical request chain with 1,328ms latency:
+**Problem:** PageSpeed flags a critical request chain with ~1,085ms latency. For the Ruby blog post, all 4 Lato font variants are in the critical path:
 
 ```
-1. HTML page (519ms)
-   └── 2. main.css (983ms) - CSS must wait for HTML
-       └── 3. LatoLatin-Regular.woff2 (1,328ms) - Font must wait for CSS
+1. HTML page (~209ms)
+   └── 2. main.css (~482ms) - CSS must wait for HTML
+       ├── LatoLatin-Regular.woff2 (~1,004ms)
+       ├── LatoLatin-Bold.woff2 (~1,085ms) ← LCP bottleneck
+       ├── LatoLatin-Italic.woff2 (~901ms)
+       └── LatoLatin-BoldItalic.woff2 (~967ms)
 ```
 
-The browser doesn't know about the Lato font until it parses the CSS `@font-face` declaration, creating a waterfall delay.
+The browser doesn't know about the Lato fonts until it parses the CSS `@font-face` declarations, creating a waterfall delay.
 
-**Solution:** Add a `<link rel="preload">` for the Lato font. This tells the browser to start downloading the font immediately, in parallel with CSS parsing.
+**Analysis of font usage across the site:**
+
+| Font Variant | Size | Used on |
+|--------------|------|---------|
+| LatoLatin-Regular | 43 KB | All pages (body text) |
+| LatoLatin-Bold | 44 KB | Blog posts with `**bold**` text (9 posts + 1 draft) |
+| LatoLatin-Italic | 45 KB | Blog posts with `*italic*` text (4 posts) |
+| LatoLatin-BoldItalic | 45 KB | Blog posts with `***bold italic***` text (7 posts) |
+
+Pages using only Regular (no bold/italic): `index.md`, `articles.md`, `bookmarks.md`, `books.md`, `presentations.md`, `projects.md`, `about.md`.
+
+**Solution:** Add `<link rel="preload">` for all 4 Lato font variants. This tells the browser to start downloading the fonts immediately, in parallel with CSS parsing.
 
 **Changes:**
 
 ```html
 <!-- Add to head.html, before the main.css link -->
 <link rel="preload" href="/assets/fonts/LatoLatin-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/LatoLatin-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/LatoLatin-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/LatoLatin-BoldItalic.woff2" as="font" type="font/woff2" crossorigin>
 ```
 
 **Why `crossorigin`:** Required for fonts even when self-hosted, due to how browsers handle font requests.
 
-**Trade-off:** If a page doesn't use Lato, bandwidth is wasted. Since Lato is the main body font used on every page, this is not a concern.
+**Trade-off:** Pages that only use Regular (homepage, etc.) will download ~134 KB of fonts they don't use. This is acceptable because:
+1. Most content pages (blog posts) use multiple font variants
+2. The homepage is lightweight and fast anyway
+3. 134 KB is relatively small on modern connections
+4. Preloading only Regular would still leave Bold as the critical path bottleneck on blog posts
 
 ---
 
 ## Files to Modify
 
-1. `_includes/head.html` - Preload Google Fonts, preload Lato font
+1. `_includes/head.html` - Preload Google Fonts, preload all 4 Lato font variants
 2. `_includes/google-analytics.html` - Create/override with async loading
 3. `_includes/footer.html` - Add image dimensions
 4. `index.md` - Add image dimensions to Sohonet logo
