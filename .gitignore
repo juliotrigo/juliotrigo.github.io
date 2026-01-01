@@ -5,3 +5,9 @@ _site
 
 # Bundler
 vendor/bundle
+
+# macOS
+.DS_Store
+
+# Local temporary files
+tmp/
