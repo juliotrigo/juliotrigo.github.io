@@ -12,7 +12,7 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 | 4 | Fix `<html lang>` attribute | ✅ Completed (2025-12-08) |
 | 5 | Enable CSS minification | ✅ Completed (2025-12-08) |
 | 6 | Optimize images (optional) | ⏳ Pending |
-| 7 | Preload Lato font to reduce critical chain | ⏳ Pending |
+| 7 | Preload Lato fonts to reduce critical chain | ✅ Completed (2025-12-10) |
 
 ---
 
@@ -315,6 +315,18 @@ Pages using only Regular (no bold/italic): `index.md`, `articles.md`, `bookmarks
 2. The homepage is lightweight and fast anyway
 3. 134 KB is relatively small on modern connections
 4. Preloading only Regular would still leave Bold as the critical path bottleneck on blog posts
+
+**Testing (2025-12-10):**
+
+1. Built site with `bundle exec jekyll build` - ✅ Success
+2. Verified generated HTML contains all 4 preload links - ✅ Present
+3. Tested locally with `bundle exec jekyll serve` - ✅ Working
+4. PageSpeed results for Ruby blog post:
+   - **Before:** Maximum critical path latency 1,085ms (fonts in chain)
+   - **After:** Maximum critical path latency 897ms (fonts removed from chain)
+   - **Improvement:** ~188ms reduction in critical path latency
+
+**Note:** The remaining HTML → CSS chain (897ms) is unavoidable and cannot be optimised with preloading. CSS is already discovered immediately in the `<head>`, so preloading it would be redundant. This chain represents the minimum critical path for any web page.
 
 ---
 
