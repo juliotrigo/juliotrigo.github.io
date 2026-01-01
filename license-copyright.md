@@ -1,7 +1,7 @@
 ---
 layout: page
 title: License & copyright
-last_modified_at: 2025-12-07 14:30:00 +0100
+last_modified_at: 2026-01-01 12:00:00 +0100
 permalink: /license-copyright/
 ---
 
