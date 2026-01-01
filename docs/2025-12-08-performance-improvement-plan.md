@@ -13,6 +13,8 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 | 5 | Enable CSS minification | ✅ Completed (2025-12-08) |
 | 6 | Optimize images (optional) | ⏳ Pending |
 | 7 | Preload Lato fonts to reduce critical chain | ✅ Completed (2025-12-10) |
+| 8 | Remove legacy font formats | ⏳ Pending |
+| 9 | Migrate SASS @import to @use/@forward | ⏳ Pending (Low priority) |
 
 ---
 
@@ -22,11 +24,13 @@ This plan addresses the performance issues identified by PageSpeed Insights for 
 |----------|-------|--------|---------|
 | High | Render-blocking Google Fonts | 540ms | Significant |
 | High | Unused JavaScript (gtag.js) | 54 KiB | Medium |
+| High | Legacy font formats (.eot, .ttf, .woff) | Repository bloat | 1.16 MB |
 | Medium | Unsized images (Gravatar, Sohonet logo) | CLS | Layout stability |
 | Medium | Image delivery (no optimization) | 7 KiB | Minor |
 | Low | Inefficient cache policy | 19 KiB | Minor |
 | Low | `<html lang>` invalid value | Accessibility | None |
 | Low | CSS not minified | ~8 KiB | Minor |
+| Low | SASS @import deprecated | Build warnings | None (future-proofing) |
 
 ---
 
@@ -346,5 +350,181 @@ After implementing these changes:
 - **CLS:** Improved (explicit image dimensions)
 - **CSS size:** Reduced by ~40-50% (minification)
 - **Accessibility:** Improved (valid lang attribute)
+
+Estimated new Performance score: **92-96** (mobile)
+
+---
+
+### 8. Remove Legacy Font Formats
+
+**Files:**
+- `_sass/latolatinweb.scss`
+- `assets/fonts/` (delete legacy files)
+
+**Problem:** The site includes legacy font formats that are no longer needed by any modern browser:
+
+| Format | Purpose | Browser Support | Files |
+|--------|---------|-----------------|-------|
+| `.eot` | IE 6-9 | Dead (IE retired 2022) | 4 files, 276 KB |
+| `.ttf` | Legacy fallback | Superseded by woff2 | 4 files, 598 KB |
+| `.woff` | Old browsers | Superseded by woff2 (2014+) | 4 files, 293 KB |
+| `.woff2` | Modern browsers | All browsers since 2016 | 4 files, 179 KB ✅ Keep |
+
+**Total legacy bloat:** 1.16 MB of unused files in repository and build output.
+
+**Browser support for woff2:**
+- Chrome 36+ (2014)
+- Firefox 39+ (2015)
+- Safari 10+ (2016)
+- Edge 14+ (2016)
+- Opera 23+ (2014)
+- iOS Safari 10+ (2016)
+- Android Browser 5+ (2015)
+
+**Clarifications:**
+
+1. **Are legacy files served on every request?** No. Browsers only download the first format they support from the `src:` list. Modern browsers download only `.woff2`. The legacy files exist in the repository and deployment but are never downloaded.
+
+2. **What browsers don't support woff2?** Only IE (all versions, retired 2022), Safari 9 and earlier (macOS El Capitan, 2015), and very old Android devices (pre-2015).
+
+3. **Fallback behavior:** For the rare unsupported browser, the site uses the system fallback font (e.g., Arial/Helvetica). The site remains fully functional and readable.
+
+**Solution:** Remove legacy font files and update SCSS to only reference woff2.
+
+#### 8a. Update `_sass/latolatinweb.scss`
+
+**Changes:**
+
+```scss
+/* Before - each @font-face block has multiple formats */
+@font-face {
+    font-family: 'LatoLatinWeb';
+    src: url('fonts/LatoLatin-Bold.eot'); /* IE9 Compat Modes */
+    src: url('fonts/LatoLatin-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/LatoLatin-Bold.woff2') format('woff2'), /* Modern Browsers */
+         url('fonts/LatoLatin-Bold.woff') format('woff'), /* Modern Browsers */
+         url('fonts/LatoLatin-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+}
+
+/* After - simplified to woff2 only */
+@font-face {
+    font-family: 'LatoLatinWeb';
+    src: url('fonts/LatoLatin-Bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+}
+```
+
+Apply this pattern to all 4 font variants (Regular, Bold, Italic, BoldItalic).
+
+#### 8b. Delete Legacy Font Files
+
+```bash
+# Remove .eot files (IE 6-9)
+rm assets/fonts/LatoLatin-*.eot
+
+# Remove .ttf files (legacy fallback)
+rm assets/fonts/LatoLatin-*.ttf
+
+# Remove .woff files (superseded by woff2)
+rm assets/fonts/LatoLatin-*.woff
+```
+
+**Files to keep (woff2 only):**
+- `assets/fonts/LatoLatin-Regular.woff2` (43 KB)
+- `assets/fonts/LatoLatin-Bold.woff2` (44 KB)
+- `assets/fonts/LatoLatin-Italic.woff2` (45 KB)
+- `assets/fonts/LatoLatin-BoldItalic.woff2` (45 KB)
+
+**Testing:**
+
+1. Build site with `bundle exec jekyll build`
+2. Verify fonts render correctly in browser
+3. Check Network tab shows only woff2 requests
+4. Verify `_site/assets/fonts/` contains only 4 woff2 files
+5. Measure repository size reduction
+
+**Expected Results:**
+- Repository size: -1.16 MB
+- Build output size: -1.16 MB
+- No visual change (same fonts, same rendering)
+- Simplified CSS (easier to maintain)
+
+---
+
+### 9. Migrate SASS @import to @use/@forward (Low Priority)
+
+**Files:**
+- `assets/main.scss`
+- `_sass/*.scss`
+
+**Problem:** The `@import` rule is deprecated in Dart Sass. Build warnings appear:
+
+```
+Deprecation Warning: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.
+```
+
+**Background:** Sass is transitioning from `@import` (global scope, can cause conflicts) to `@use`/`@forward` (explicit namespacing, better encapsulation). This is a long-term deprecation - Dart Sass 3.0 has no release date yet.
+
+**Current state:** Warnings come from both:
+1. Local files (`assets/main.scss` using `@import "minima"`)
+2. Minima theme internals (out of our control)
+
+**Why low priority:**
+- No functional impact (just warnings)
+- Minima theme itself uses `@import` internally
+- Full migration requires Minima to update first
+- Dart Sass 3.0 release date unknown
+
+**Partial solution:** Update local imports to `@use` where possible:
+
+```scss
+/* Before */
+@import "minima";
+@import "latolatinweb";
+@import "one-dark-pro";
+@import "juliotrigo";
+@import "pygments-template";
+
+/* After */
+@use "minima";
+@use "latolatinweb";
+@use "one-dark-pro";
+@use "juliotrigo";
+@use "pygments-template";
+```
+
+**Note:** This migration may require additional changes to handle namespacing and variable access. Test thoroughly.
+
+**Recommendation:** Wait until Minima theme updates to `@use`/`@forward` before attempting this migration. The warnings are informational only and do not affect the build output.
+
+---
+
+## Files to Modify
+
+1. `_includes/head.html` - Preload Google Fonts, preload all 4 Lato font variants
+2. `_includes/google-analytics.html` - Create/override with async loading
+3. `_includes/footer.html` - Add image dimensions
+4. `index.md` - Add image dimensions to Sohonet logo
+5. `_config.yml` - Fix lang attribute, enable CSS minification
+6. `_sass/latolatinweb.scss` - Remove legacy font format references
+7. `assets/fonts/` - Delete legacy font files (.eot, .ttf, .woff)
+
+## Expected Results
+
+After implementing these changes:
+- **Render-blocking time:** Reduced by ~540ms
+- **Unused JavaScript:** Reduced impact (async loading)
+- **CLS:** Improved (explicit image dimensions)
+- **CSS size:** Reduced by ~40-50% (minification)
+- **Accessibility:** Improved (valid lang attribute)
+- **Repository size:** Reduced by ~1.16 MB (legacy font removal)
+- **Build output:** Reduced by ~1.16 MB
 
 Estimated new Performance score: **92-96** (mobile)
